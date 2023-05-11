@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:46:13 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/11 19:56:22 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/11 23:40:31 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 #include <string>
 #include <iomanip>
 #include <limits>
-
-void	print_size(std::string s, int size)
-{
-	std::string sub;
-	if (s.length() > 10)
-	{
-		sub = s.substr(0, 9);
-		std::cout << std::setw(size - 1) << std::right << sub << '.' << '|';
-	}
-	else
-		std::cout << std::setw(size) << std::right << s << '|';
-}
 
 void	print_contact(Contact contact)
 {
@@ -40,18 +28,6 @@ void	print_contact(Contact contact)
 	std::cout << contact.number << '\n';
 	std::cout << std::setw(16) << std::left << "Darkest secret: ";
 	std::cout << contact.secret << '\n' << '\n';
-}
-
-void	print_line(Contact contact, int i)
-{
-	if (contact.first_name == "")
-		return;
-	std::cout << '|';
-	std::cout << std::setw(10) << std::right << i << '|';
-	print_size(contact.first_name, 10);
-	print_size(contact.last_name, 10);
-	print_size(contact.nickname, 10);
-	std::cout << '\n';
 }
 
 void	search_contact(PhoneBook phonebook)

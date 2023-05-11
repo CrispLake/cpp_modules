@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:44:48 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/11 19:54:48 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/11 23:34:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ class PhoneBook {
 	private:
 		Contact	contacts[8];
 		int	current;
+		int	empty;
 	public:
 		PhoneBook();
-		void	addContact();
+		void	setContact();
 		void	list();
+		void	getContact(Contact contact, int i);
 		~PhoneBook();
 };
 

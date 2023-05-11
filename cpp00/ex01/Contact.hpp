@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:31:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/11 19:46:51 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/11 23:54:23 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ class Contact {
 		void	setNick(std::string nick);
 		void	setNbr(std::string nb);
 		void	setSecret(std::string secret);
+		void	printValue(std::string value);
+		void	printLine(Contact contact, int i);
 		~Contact();
 };
 

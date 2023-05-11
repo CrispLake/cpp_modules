@@ -6,11 +6,14 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:36:26 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/11 19:47:00 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/11 23:58:40 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include "iomanip"
+#include "iostream"
+#include <string>
 
 Contact::Contact() {
 };
@@ -36,4 +39,21 @@ void	Contact::setNbr(std::string nb) {
 
 void	Contact::setSecret(std::string secret) {
 	dark_secret = secret;
+}
+
+void	Contact::printValue(std::string value) {
+	if (value.length() > 10)
+		std::cout << std::setw(10) << std::right << value.substr(0, 9) << '.' << '|';
+	else
+		std::cout << std::setw(10) << std::right << value << '|';
+}
+
+void	Contact::printLine(Contact contact, int i)
+{
+	std::cout << '|';
+	printValue(std::to_string(i));
+	printValue(contact.first_name);
+	printValue(contact.last_name);
+	printValue(contact.nickname);
+	std::cout << '\n';
 }
