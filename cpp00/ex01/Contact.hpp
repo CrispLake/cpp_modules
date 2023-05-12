@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:31:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/11 23:54:23 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/12 13:20:51 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Contact {
 		std::string nickname;
 		std::string number;
 		std::string dark_secret;
+		void	printValue(std::string value);
 	public:
 		Contact();
 		void	setFirst(std::string first);
@@ -29,8 +30,9 @@ class Contact {
 		void	setNick(std::string nick);
 		void	setNbr(std::string nb);
 		void	setSecret(std::string secret);
-		void	printValue(std::string value);
-		void	printLine(Contact contact, int i);
+		void	setValue(std::string variable, std::string value);
+		void	printLine(int i);
+		void	printContact();
 		~Contact();
 };
 
