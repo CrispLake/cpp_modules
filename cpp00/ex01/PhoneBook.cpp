@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:02:56 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/15 17:11:39 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/15 18:38:25 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	PhoneBook::setContact() {
 	if (input.empty())
 		return (-1);
 	contacts[current].setNbr(input);
-	input = getNonEmptyInput("Dark secret: ");
+	input = getNonEmptyInput("Darkest secret: ");
 	if (input.empty())
 		return (-1);
 	contacts[current].setSecret(input);
