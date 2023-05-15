@@ -6,14 +6,14 @@
 #    By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 12:50:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/05/10 14:30:45 by emajuri          ###   ########.fr        #
+#    Updated: 2023/05/15 13:22:11 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = phonebook
 
-SRC = $(NAME).cpp
+SRC = main.cpp PhoneBook.cpp Contact.cpp
 
 OBJ = $(addprefix obj/,$(SRC:%.cpp=%.o))
 

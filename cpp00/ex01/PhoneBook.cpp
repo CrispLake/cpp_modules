@@ -6,24 +6,27 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:02:56 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/12 17:06:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/15 14:45:12 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-#include <cctype>
-#include <string>
 
-PhoneBook::PhoneBook() {
+PhoneBook::PhoneBook() : current(0), empty(true) {
 }
 
 PhoneBook::~PhoneBook() {
 }
 
+std::string	PhoneBook::getNonEmptyInput(std::string s) {
+}
+
 int	PhoneBook::setContact() {
 	std::string	input;
-
+	if	(current > 7)
+		current = 0;
 	empty = false;
+
 	std::cout << "First name: ";
 	std::getline(std::cin, input);
 	contacts[current].setFirst(input);
@@ -42,8 +45,6 @@ int	PhoneBook::setContact() {
 	if (std::cin.eof())
 		return (-1);
 	current++;
-	if	(current > 7)
-		current = 0;
 	return (0);
 }
 
@@ -51,65 +52,42 @@ void	PhoneBook::getContact(int i) {
 	contacts[i].printContact();
 }
 
-void	PhoneBook::list() {
-	int	i;
-
-	i = 0;
+int	PhoneBook::list() {
 	std::cout << "\nPhonebook:\n";
-	while (i <= 7)
-	{
-		if (empty)
-		{
+	for (int i = 0; i <= 7; i++) {
+		if (empty) {
 			std::cout << "Phonebook is empty. Add some contacts with the ADD command\n\n";
-			break;
+			return (1);
 		}
-		contacts[i].printLine(i);
-		i++;
+		if (!contacts[i].isEmpty())
+			contacts[i].printLine(i);
 	}
-}
-
-int	PhoneBook::searchPhoneBook() {
-	std::string	input;
-	int	index;
-	list();
-	std::cout << "\nGive index of the desired contact: ";
-	std::getline(std::cin, input);
-	if (std::cin.eof())
-		return (-1);
-	if (input.length() > 1 && std::isdigit(input[0]))
-		std::cout << "\nGive index from the PhoneBook\n";
-	else
-		index = std::stoi(input);
 	return (0);
 }
 
-void	search_contact(PhoneBook phonebook)
-{
-	int	input;
-	int	count;
-
-	input = 0;
-	count = 0;
-	while (1)
-	{
-		std::cout << '\n' << "Input index of the desired contact: ";
-		if
-		else if (!std::cin)
-		{
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+int	PhoneBook::search() {
+	std::string	input;
+	int	retry = 5;
+	if (list())
+		return (1);
+	while (1) {
+		if (!retry) {
+			list();
+			retry = 5;
 		}
-		else if (0 <= input && input <= 7 && phonebook.contacts[input].first_name != "")
-		{
-			print_contact(phonebook.contacts[input]);
-			break;
+		std::cout << "\nGive index of the desired contact: ";
+		std::getline(std::cin, input);
+		if (std::cin.eof())
+			return (-1);
+		if (input.length() == 1 && std::isdigit(input[0])) {
+			int i = std::stoi(input);
+			if (i >= 0 && i <= 7 && !contacts[i].isEmpty()) {
+				getContact(i);
+				break;
+			}
 		}
-		if (count > 5)
-		{
-			list_contacts(phonebook);
-			count = 0;
-		}
-		std::cout << '\n' << "Give an index from the phonebook";
-		count++;
+		std::cout << "\nError. Incorrect index\n";
+		retry--;
 	}
+	return (0);
 }

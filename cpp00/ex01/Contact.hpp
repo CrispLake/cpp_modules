@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 14:31:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/12 13:20:51 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/15 14:16:40 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Contact {
 		std::string nickname;
 		std::string number;
 		std::string dark_secret;
+		bool	empty;
 		void	printValue(std::string value);
 	public:
 		Contact();
@@ -33,6 +34,7 @@ class Contact {
 		void	setValue(std::string variable, std::string value);
 		void	printLine(int i);
 		void	printContact();
+		bool	isEmpty();
 		~Contact();
 };
 
