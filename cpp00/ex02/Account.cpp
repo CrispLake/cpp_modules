@@ -6,12 +6,13 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:07:14 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/16 18:46:25 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/16 19:22:40 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
 
 int Account::_nbAccounts;
 int Account::_totalAmount;
@@ -38,7 +39,26 @@ Account::~Account() {
 }
 
 void Account::_displayTimestamp() {
-	std::cout << "[Time] ";
+	time_t t = time(NULL);
+	tm *l = std::localtime(&t);
+	std::cout << "[";
+	std::cout << l->tm_year + 1900;
+	if (l->tm_mon < 10)
+		std::cout << '0';
+	std::cout << l->tm_mon;
+	if (l->tm_mday < 10)
+		std::cout << '0';
+	std::cout << l->tm_mday << '_';
+	if (l->tm_hour < 10)
+		std::cout << '0';
+	std::cout << l->tm_hour;
+	if (l->tm_min < 10)
+		std::cout << '0';
+	std::cout << l->tm_min;
+	if (l->tm_sec < 10)
+		std::cout << '0';
+	std::cout << l->tm_sec;
+	std::cout << "] ";
 }
 
 int	Account::getNbAccounts( void ) {
