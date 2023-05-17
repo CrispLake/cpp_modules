@@ -6,11 +6,15 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:29:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/17 12:06:27 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/17 18:03:18 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+
+#include "Zombie.hpp"
+
+Zombie*	newZombie( std::string name );
+void	randomChump( std::string name );
 
 int	main() {
 	Zombie z;
