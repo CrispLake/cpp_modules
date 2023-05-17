@@ -6,11 +6,12 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 11:29:47 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/17 14:24:34 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/17 18:10:12 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#include "Zombie.hpp"
+Zombie*	zombieHorde( int N, std::string name );
 
 int	main() {
 	int	s = 5;
