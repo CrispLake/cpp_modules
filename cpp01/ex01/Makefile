@@ -6,13 +6,13 @@
 #    By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 12:50:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/05/17 14:25:42 by emajuri          ###   ########.fr        #
+#    Updated: 2023/05/17 14:27:38 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = main
-SRC = $(NAME).cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRC = $(NAME).cpp Zombie.cpp zombieHorde.cpp
 OBJ = $(addprefix obj/,$(SRC:%.cpp=%.o))
 DEP = $(OBJ:%.o=%.d)
 
