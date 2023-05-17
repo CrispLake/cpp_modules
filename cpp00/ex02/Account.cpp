@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:07:14 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/16 19:22:40 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/17 10:19:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int Account::_totalAmount;
 int Account::_totalNbDeposits;
 int Account::_totalNbWithdrawals;
 
-Account::Account(int initial_deposit) : _amount(initial_deposit) {
+Account::Account(int initial_deposit) : _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0) {
 	_displayTimestamp();
 	_accountIndex = _nbAccounts;
 	_nbAccounts++;
@@ -122,4 +122,9 @@ int		Account::checkAmount( void ) const {
 }
 
 void	Account::displayStatus( void ) const {
+	_displayTimestamp();
+	std::cout << "index:" + std::to_string(_accountIndex) + ";";
+	std::cout << "amount:" + std::to_string(_amount) + ";";
+	std::cout << "deposits:" + std::to_string(_nbDeposits) + ";";
+	std::cout << "withdrawals:" + std::to_string(_nbWithdrawals) + "\n";
 }
