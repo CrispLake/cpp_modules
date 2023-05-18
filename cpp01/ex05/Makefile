@@ -6,7 +6,7 @@
 #    By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 12:50:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/05/18 16:51:42 by emajuri          ###   ########.fr        #
+#    Updated: 2023/05/18 17:50:32 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC_DIR = ./src
 OBJ_DIR = ./obj
 
 #flags
-# WWW = -Wall -Wextra -Werror
+WWW = -Wall -Wextra -Werror
 FLAGS = $(WWW) -std=c++98 -I $(INC)
 
 .PHONY: all clean fclean re
