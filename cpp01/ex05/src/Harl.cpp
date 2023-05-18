@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:41:45 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/18 17:30:36 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/18 18:25:27 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	Harl::complain( std::string level ) {
 	p p_warning = &Harl::warning;
 	p p_error = &Harl::error;
 	level == "debug" ? (x.*p_debug) () :
-	(level == "info" ? (x.*p_info) () : 
-	(level == "warning" ? (x.*p_warning) () : 
-	(level == "error" ? (x.*p_error) () : 
+	(level == "info" ? (x.*p_info) () :
+	(level == "warning" ? (x.*p_warning) () :
+	(level == "error" ? (x.*p_error) () :
 	void())));
 }
