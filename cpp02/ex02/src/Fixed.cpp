@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:13:39 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/26 20:52:21 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/26 21:04:20 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,24 +111,24 @@ Fixed&	Fixed::operator/(const Fixed &x) {
 }
 
 Fixed&	Fixed::operator++() {
-	nb += (nb << fraction_len);
+	nb++;
 	return (*this);
 }
 
 Fixed	Fixed::operator++(int) {
 	Fixed temp(*this);
-	nb += (nb << fraction_len);
+	nb++;
 	return (temp);
 }
 
 Fixed&	Fixed::operator--() {
-	nb += (nb << fraction_len);
+	nb--;
 	return (*this);
 }
 
 Fixed	Fixed::operator--(int) {
 	Fixed temp(*this);
-	nb -= (nb << fraction_len);
+	nb--;
 	return (temp);
 }
 
