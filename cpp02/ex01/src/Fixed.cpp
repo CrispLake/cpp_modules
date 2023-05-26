@@ -6,13 +6,12 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:13:39 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/26 19:07:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/26 19:34:08 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Fixed.hpp"
+#include "Fixed.hpp"
 #include <iostream>
-#include <ostream>
 #include <sstream>
 
 Fixed::Fixed() : nb(0) {
