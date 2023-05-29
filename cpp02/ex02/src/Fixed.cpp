@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 12:13:39 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/26 21:04:20 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/29 14:22:33 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,48 +66,52 @@ std::ostream&	operator<<(std::ostream& os, const Fixed& x) {
 	return (os);
 }
 
-bool	Fixed::operator>(const Fixed &x) {
+bool	Fixed::operator>(const Fixed &x) const {
 	return (nb > x.nb);
 }
 
-bool	Fixed::operator>=(const Fixed &x) {
+bool	Fixed::operator>=(const Fixed &x) const {
 	return (nb >= x.nb);
 }
 
-bool	Fixed::operator<(const Fixed &x) {
+bool	Fixed::operator<(const Fixed &x) const {
 	return (nb < x.nb);
 }
 
-bool	Fixed::operator<=(const Fixed &x) {
+bool	Fixed::operator<=(const Fixed &x) const {
 	return (nb <= x.nb);
 }
 
-bool	Fixed::operator==(const Fixed &x) {
+bool	Fixed::operator==(const Fixed &x) const {
 	return (nb == x.nb);
 }
 
-bool	Fixed::operator!=(const Fixed &x) {
+bool	Fixed::operator!=(const Fixed &x) const {
 	return (nb != x.nb);
 }
 
-Fixed&	Fixed::operator+(const Fixed &x) {
-	nb = nb - (x.nb << fraction_len);
-	return (*this);
+Fixed	Fixed::operator+(const Fixed &x) const {
+	Fixed temp(*this);
+	temp.nb += x.nb;
+	return (temp);
 }
 
-Fixed&	Fixed::operator-(const Fixed &x) {
-	nb = nb - (x.nb << fraction_len);
-	return (*this);
+Fixed	Fixed::operator-(const Fixed &x) const {
+	Fixed temp(*this);
+	temp.nb -= x.nb;
+	return (temp);
 }
 
-Fixed&	Fixed::operator*(const Fixed &x) {
-	nb = (nb * x.nb) >> fraction_len;
-	return (*this);
+Fixed	Fixed::operator*(const Fixed &x) const {
+	Fixed temp(*this);
+	temp.nb = (temp.nb * x.nb) >> fraction_len;
+	return (temp);
 }
 
-Fixed&	Fixed::operator/(const Fixed &x) {
-	nb = (nb << fraction_len) / x.nb;
-	return (*this);
+Fixed	Fixed::operator/(const Fixed &x) const {
+	Fixed temp(*this);
+	temp.nb = (temp.nb << fraction_len) / x.nb;
+	return (temp);
 }
 
 Fixed&	Fixed::operator++() {
@@ -133,17 +137,17 @@ Fixed	Fixed::operator--(int) {
 }
 
 const Fixed&	Fixed::min(Fixed& x, Fixed& y) {
-	return (x.nb < y.nb ? x : y);
+	return (x.nb <= y.nb ? x : y);
 }
 
 const Fixed&	Fixed::min(const Fixed& x, const Fixed& y) {
-	return (x.nb < y.nb ? x : y);
+	return (x.nb <= y.nb ? x : y);
 }
 
 const Fixed&	Fixed::max(Fixed& x, Fixed& y) {
-	return (x.nb > y.nb ? x : y);
+	return (x.nb >= y.nb ? x : y);
 }
 
 const Fixed&	Fixed::max(const Fixed& x, const Fixed& y) {
-	return (x.nb > y.nb ? x : y);
+	return (x.nb >= y.nb ? x : y);
 }
