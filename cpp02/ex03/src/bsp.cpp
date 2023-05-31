@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:44:35 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/29 18:49:33 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/30 11:41:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point) {
 	sum = sum + triangleArea(a, c, point);
 	sum = sum + triangleArea(c, b, point);
 	if (sum != area)
+		return (false);
+	if (triangleArea(a, b, point) == 0)
+		return (false);
+	if (triangleArea(a, c, point) == 0)
+		return (false);
+	if (triangleArea(c, b, point) == 0)
 		return (false);
 	return (true);
 }
