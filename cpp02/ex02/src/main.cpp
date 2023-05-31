@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:38:57 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/29 14:02:36 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/31 17:02:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int main( void ) {
 	std::cout << x << " - " << y << " = " << (x - y) << '\n';
 	std::cout << x << " * " << y << " = " << (x * y) << '\n';
 	std::cout << x << " / " << y << " = " << (x / y) << '\n';
+	std::cout << x << " + " << y << " = " << (x = x + y) << '\n';
+	std::cout << x << " - " << y << " = " << (x = x - y) << '\n';
 	std::cout << "min: " << Fixed::min(x, xC) << "\n";
 	std::cout << "min: " << Fixed::min(xC, yC) << "\n";
 	std::cout << "max: " << Fixed::max(x, y) << "\n";
