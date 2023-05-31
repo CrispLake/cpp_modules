@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:38:57 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/31 17:02:58 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/05/31 17:05:17 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int main( void ) {
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
 	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << --a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a-- << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
