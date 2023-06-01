@@ -6,22 +6,22 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:31:37 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/01 19:14:56 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/01 20:51:06 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() : name("NONE"), hp(10), ep(10), dmg(0) {
-	std::cout << "Default constructor called\n";
+	std::cout << "ClapTrap Default constructor called\n";
 }
 
 ClapTrap::ClapTrap(const std::string s) : name(s), hp(10), ep(10), dmg(0) {
-	std::cout << "Name constructor called\n";
+	std::cout << "ClapTrap Name constructor called\n";
 }
 
 ClapTrap::ClapTrap(const ClapTrap& x) {
-	std::cout << "Copy constructor called\n";
+	std::cout << "ClapTrap Copy constructor called\n";
 	name = x.name;
 	hp = x.hp;
 	ep = x.ep;
@@ -29,7 +29,7 @@ ClapTrap::ClapTrap(const ClapTrap& x) {
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap &x) {
-	std::cout << "Copy assignment operator called\n";
+	std::cout << "ClapTrap Copy assignment operator called\n";
 	if (this != &x) {
 		name = x.name;
 		hp = x.hp;
@@ -40,7 +40,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &x) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "Destructor called\n";
+	std::cout << "ClapTrap Destructor called\n";
 }
 
 void	ClapTrap::attack(const std::string& target) {
