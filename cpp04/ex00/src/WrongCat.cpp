@@ -5,7 +5,7 @@ WrongCat::WrongCat() : WrongAnimal() {
 	type = "WrongCat";
 }
 
-WrongCat::WrongCat(const WrongCat& other) : Animal() {
+WrongCat::WrongCat(const WrongCat& other) : WrongAnimal() {
 	std::cout << "WrongCat copy constructor called\n";
 	type = other.type;
 }
@@ -22,6 +22,6 @@ WrongCat::~WrongCat() {
 	std::cout << "WrongCat destructor called\n";
 }
 
-void	WrongCat::makeSound() {
+void	WrongCat::makeSound() const {
 	std::cout << "*WrongCat sounds*\n";
 }
