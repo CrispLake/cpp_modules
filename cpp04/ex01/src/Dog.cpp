@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:44:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/05 15:58:37 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/06 10:31:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	Dog::makeSound() const {
 	std::cout << "*Dog sounds*\n";
 }
 
-void	Cat::copyBrain(const Brain* otherBrain) {
+void	Dog::copyBrain(const Brain* otherBrain) {
 	brain = new Brain;
 	for (int i = 0; i < 100; i++) {
 		brain[i] = otherBrain[i];
