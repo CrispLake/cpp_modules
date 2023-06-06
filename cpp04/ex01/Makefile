@@ -6,14 +6,14 @@
 #    By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 12:50:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/06/03 01:12:55 by emajuri          ###   ########.fr        #
+#    Updated: 2023/06/06 10:32:03 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = main
 
-SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 OBJ = $(addprefix obj/,$(SRC:%.cpp=%.o))
 
