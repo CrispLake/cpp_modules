@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:44:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/05 16:05:41 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:10:50 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,26 @@
 #include "WrongCat.hpp"
 
 int	main() {
-	const Animal animals[20];
+	const Animal *animals[20];
+	int	count = 5;
 
-	for(int i = 0; i < 20; i++) {
-		if (i < 10)
+	for(int i = 0; i < count; i++) {
+		if (i <= count / 2)
 			animals[i] = new Dog();
 		else
 			animals[i] = new Cat();
 	}
+	std::cout << "\n";
 
-	for(int i = 0; i < 20; i++) {
+	// dynamic_cast<const Dog *>(animals[0])->setIdea("Good idea");
+	// dynamic_cast<const Dog *>(animals[0])->setIdea("Bad idea");
+	// dynamic_cast<const Dog *>(animals[0])->printIdeas();
+
+	std::cout << "\n";
+
+	for(int i = 0; i < count; i++) {
 		delete animals[i];
 	}
-	
+
 	return 0;
 };
