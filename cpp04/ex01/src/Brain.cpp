@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 13:05:14 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/05 15:37:25 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/06 10:33:37 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	Brain::setIdea(std::string idea) {
 	latest++;
 }
 
-void	printIdeas() {
+void	Brain::printIdeas() {
 	for (int i = 0; i < 100; i++)
 		std::cout << ideas[i];
 }
