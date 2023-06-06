@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:44:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/06 11:10:50 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:14:13 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	main() {
 	}
 	std::cout << "\n";
 
-	// dynamic_cast<const Dog *>(animals[0])->setIdea("Good idea");
-	// dynamic_cast<const Dog *>(animals[0])->setIdea("Bad idea");
-	// dynamic_cast<const Dog *>(animals[0])->printIdeas();
+	dynamic_cast<const Dog *>(animals[0])->getBrain()->setIdea("Good idea");
+	dynamic_cast<const Dog *>(animals[0])->getBrain()->setIdea("Bad idea");
+	dynamic_cast<const Dog *>(animals[0])->getBrain()->printIdeas();
 
 	std::cout << "\n";
 
