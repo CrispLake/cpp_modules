@@ -1,0 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/07 16:27:00 by emajuri           #+#    #+#             */
+/*   Updated: 2023/06/07 17:14:00 by emajuri          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Cure.hpp"
+#include <iostream>
+
+Cure::Cure() {
+}
+
+Cure::Cure(const Cure& other) {
+	typeStr = other.typeStr;
+}
+
+Cure&	Cure::operator=(const Cure& other) {
+	if (this != &other)
+		typeStr = other.typeStr;
+	return (*this);
+}
+
+Cure::~Cure() {
+}
+
+Amateria*	Amateria::clone() const {
+	return (new Cure = *this);
+}
+
+void	Cure::use(ICharacter& target) const {
+	std::cout << "* heals " << target.name << "'s wounds *\n";
+}
