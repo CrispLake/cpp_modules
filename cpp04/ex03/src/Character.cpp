@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:42:14 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/07 17:11:07 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:20:23 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ Character::Character(const std::string Name) : name(Name) {
 
 Character::Character(const Character& other) {
 	name = other.name;
-	for (int i = 0; i < 4; i++) {
-		this->inventory[i] = other.inventory[i].clone();
+	for (int i = 0; i < 4; i++)
+		this->inventory[i] = other.inventory[i]->clone();
 }
 
 Character&	Character::operator=(const Character& other) {
@@ -29,9 +29,9 @@ Character&	Character::operator=(const Character& other) {
 		name = other.name;
 		for (int i = 0; i < 4; i++) {
 			if (this->inventory[i]) {
-				delete this->inventory[i]
+				delete this->inventory[i];
 			}
-			this->inventory[i] = other.inventory[i].clone();
+			this->inventory[i] = other.inventory[i]->clone();
 		}
 	}
 	return (*this);
@@ -40,7 +40,7 @@ Character&	Character::operator=(const Character& other) {
 Character::~Character() {
 	for (int i = 0; i < 4; i++) {
 		if (this->inventory[i]) {
-			delete this->inventory[i]
+			delete this->inventory[i];
 		}
 	}
 }
