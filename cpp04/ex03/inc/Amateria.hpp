@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 13:01:24 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 13:02:33 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 19:21:54 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 class ICharacter;
 
 class AMateria {
-	protected:
-		std::string	typeStr;
-
 	public:
 		AMateria();
 		AMateria(const AMateria& other);
@@ -32,6 +29,9 @@ class AMateria {
 
 		virtual AMateria*	clone() const = 0;
 		virtual void	use(ICharacter& target);
+
+	protected:
+		std::string	typeStr;
 };
 
 #endif

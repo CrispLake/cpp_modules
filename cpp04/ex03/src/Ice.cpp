@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:14:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 13:03:08 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 19:24:59 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include "ICharacter.hpp"
 
-Ice::Ice() {
+Ice::Ice() : AMateria("ice") {
 }
 
 Ice::Ice(const Ice& other) {

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:27:00 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 13:03:04 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 19:25:12 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include "ICharacter.hpp"
 
-Cure::Cure() {
+Cure::Cure() : AMateria("cure") {
 }
 
 Cure::Cure(const Cure& other) {
