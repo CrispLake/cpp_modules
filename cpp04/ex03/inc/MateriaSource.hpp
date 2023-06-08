@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 18:02:48 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 18:08:08 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 18:59:45 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ class MateriaSource : public IMateriaSource {
 		MateriaSource&	operator=(const MateriaSource& other);
 		~MateriaSource();
 
-		void	learnMateria(AMateria*);
+		void	learnMateria(AMateria* m);
 		AMateria*	createMateria(std::string const& type);
 
 	private:
-		
+		AMateria*	inv[4];
 };
 
 #endif

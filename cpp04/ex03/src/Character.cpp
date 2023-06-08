@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:42:14 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 17:41:21 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 19:09:06 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ Character::Character(const std::string Name) : name(Name), trash(nullptr) {
 
 Character::Character(const Character& other) : trash(nullptr) {
 	name = other.name;
-	for (int i = 0; i < 4; i++)
-		this->inventory[i] = other.inventory[i]->clone();
+	for (int i = 0; i < 4; i++) {
+		if (other.inventory[i])
+			this->inventory[i] = other.inventory[i]->clone();
+	}
 }
 
 Character&	Character::operator=(const Character& other) {
@@ -36,7 +38,11 @@ Character&	Character::operator=(const Character& other) {
 			if (this->inventory[i]) {
 				delete this->inventory[i];
 			}
-			this->inventory[i] = other.inventory[i]->clone();
+			if (other.inventory[i])
+				this->inventory[i] = other.inventory[i]->clone();
+			else
+				this->inventory[i] = nullptr;
+
 		}
 		if (this->trash != nullptr) {
 			delete this->trash;
@@ -61,12 +67,15 @@ std::string const&	Character::getName() const {
 }
 
 void	Character::equip(AMateria* m) {
+	std::cout << "Equipping\n";
 	for (int i = 0; i < 4; i++) {
+		std::cout << inventory[i] << " ";
 		if (inventory[i] == nullptr) {
 			inventory[i] = m;
 			break;
 		}
 	}
+	std::cout << "\n";
 }
 
 void	Character::unequip(int idx) {
@@ -80,6 +89,9 @@ void	Character::unequip(int idx) {
 }
 
 void	Character::use(int idx, ICharacter& target) {
-	if (idx < 4 && idx > -1 && inventory[idx] != nullptr)
+	std::cout << "trying Using index" << idx << " " << inventory[idx] << "\n";
+	if (idx < 4 && idx > -1 && inventory[idx] != nullptr) {
+		std::cout << "Using\n";
 		inventory[idx]->use(target);
+	}
 }
