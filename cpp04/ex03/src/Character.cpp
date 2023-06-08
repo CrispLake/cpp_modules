@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:42:14 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 13:26:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 16:13:31 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 Character::Character() : name("Unnamed") {
 	for (int i = 0; i < 4; i++)
-		inventory[i] = NULL;
+		inventory[i] = nullptr;
 }
 
 Character::Character(const std::string Name) : name(Name) {
 	for (int i = 0; i < 4; i++)
-		inventory[i] = NULL;
+		inventory[i] = nullptr;
 }
 
 Character::Character(const Character& other) {
@@ -44,7 +44,7 @@ Character&	Character::operator=(const Character& other) {
 
 Character::~Character() {
 	for (int i = 0; i < 4; i++) {
-		if (inventory[i]) {
+		if (inventory[i] != nullptr) {
 			delete inventory[i];
 		}
 	}
@@ -55,7 +55,8 @@ std::string const&	Character::getName() const {
 }
 
 void	Character::equip(AMateria* m) {
-	(void)m;
-	for (int i = 0; i < 4; i++)
-		std::cout << inventory[i];
+	for (int i = 0; i < 4; i++) {
+		if (inventory[i] == nullptr)
+			inventory[i] = m;
+	}
 }
