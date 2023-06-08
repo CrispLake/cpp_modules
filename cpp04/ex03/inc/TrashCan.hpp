@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   TrashCan.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 13:12:23 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 16:32:14 by emajuri          ###   ########.fr       */
+/*   Created: 2023/06/08 16:45:26 by emajuri           #+#    #+#             */
+/*   Updated: 2023/06/08 17:31:13 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "AMateria.hpp"
-#include "Character.hpp"
-#include "Ice.hpp"
-#include "ICharacter.hpp"
-#include "Cure.hpp"
+#ifndef TRASHCAN_HPP
+#define TRASHCAN_HPP
 
-int main() {
-	Character x("x");
-	AMateria* ice = new Ice();
-	AMateria* ice2 = new Ice();
-	x.equip(ice);
-	x.equip(ice2);
-	x.unequip(1);
-	std::cout << "end\n";
-	return (0);
-}
+#include "AMateria.hpp"
+
+class TrashCan {
+	public:
+		TrashCan();
+		TrashCan(AMateria* m);
+		TrashCan(const TrashCan& other);
+		TrashCan&	operator=(const TrashCan& other);
+		~TrashCan();
+
+		void	push(AMateria* m);
+
+	private:
+		TrashCan*	next;
+		AMateria*	materia;
+};
+
+#endif
