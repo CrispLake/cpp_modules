@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:42:14 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 12:20:23 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:44:05 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,8 @@ Character::~Character() {
 
 std::string const&	Character::getName() const {
 	return (name);
+}
+
+void	Character::equip(Amateria* m) {
+
 }
