@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:42:14 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 17:39:04 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 17:41:21 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	Character::unequip(int idx) {
 		if (trash == nullptr)
 			trash = new TrashCan(inventory[idx]);
 		else
-			trash.push(inventory[idx]);
+			trash->push(inventory[idx]);
 		inventory[idx] = nullptr;
 	}
 }

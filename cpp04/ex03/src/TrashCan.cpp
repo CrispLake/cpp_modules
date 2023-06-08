@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:57:46 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 17:37:24 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 17:41:48 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ TrashCan::TrashCan(const TrashCan& other) {
 }
 
 TrashCan&	TrashCan::operator=(const TrashCan& other) {
-	if (this != other) {
+	if (this != &other) {
 		next = other.next;
 		materia = other.materia;
 	}
