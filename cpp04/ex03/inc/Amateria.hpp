@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 13:01:24 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/07 16:36:59 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:27:17 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class ICharacter;
 class Amateria {
 	protected:
 		std::string	typeStr;
+
 	public:
 		Amateria();
 		Amateria(const Amateria& other);
