@@ -6,12 +6,13 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:27:00 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/07 17:14:00 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:15:36 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 #include <iostream>
+#include "ICharacter.hpp"
 
 Cure::Cure() {
 }
@@ -29,10 +30,10 @@ Cure&	Cure::operator=(const Cure& other) {
 Cure::~Cure() {
 }
 
-Amateria*	Amateria::clone() const {
-	return (new Cure = *this);
+Amateria*	Cure::clone() const {
+	return (new Cure(*this));
 }
 
-void	Cure::use(ICharacter& target) const {
-	std::cout << "* heals " << target.name << "'s wounds *\n";
+void	Cure::use(ICharacter& target) {
+	std::cout << "* heals " << target.getName() << "'s wounds *\n";
 }

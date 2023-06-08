@@ -6,12 +6,13 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:14:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 12:06:04 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:14:17 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 #include <iostream>
+#include "ICharacter.hpp"
 
 Ice::Ice() {
 }
@@ -34,5 +35,5 @@ Amateria*	Ice::clone() const {
 }
 
 void	Ice::use(ICharacter& target) {
-	std::cout << "* shoots an ice bolt at " << target.name << " *\n";
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
 }

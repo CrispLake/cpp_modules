@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:25:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/07 16:26:43 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:14:46 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Cure : public Amateria {
 		~Cure();
 
 		Amateria*	clone() const;
-		void	use(ICharacter& target) const;
+		void	use(ICharacter& target);
 };
 
 #endif
