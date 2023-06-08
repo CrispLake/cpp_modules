@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 13:12:23 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 17:43:33 by emajuri          ###   ########.fr       */
+/*   Created: 2023/06/08 18:02:48 by emajuri           #+#    #+#             */
+/*   Updated: 2023/06/08 18:08:08 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "AMateria.hpp"
-#include "Character.hpp"
-#include "Ice.hpp"
-#include "ICharacter.hpp"
-#include "Cure.hpp"
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
-int main() {
-	Character x("x");
-	AMateria* ice = new Ice();
-	AMateria* ice2 = new Ice();
-	x.equip(ice);
-	x.equip(ice2);
-	x.unequip(1);
-	x.unequip(0);
-	std::cout << "end\n";
-	return (0);
-}
+#include "IMateriaSource.hpp"
+
+class MateriaSource : public IMateriaSource {
+	public:
+		MateriaSource();
+		MateriaSource(const MateriaSource& other);
+		MateriaSource&	operator=(const MateriaSource& other);
+		~MateriaSource();
+
+		void	learnMateria(AMateria*);
+		AMateria*	createMateria(std::string const& type);
+
+	private:
+		
+};
+
+#endif

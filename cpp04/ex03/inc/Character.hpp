@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:38:07 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 17:30:08 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 18:07:52 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "ICharacter.hpp"
 #include "TrashCan.hpp"
 
-class Character {
+class Character : public ICharacter {
 	public:
 		Character();
 		Character(std::string Name);

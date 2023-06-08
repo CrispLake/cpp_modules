@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 13:12:23 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 17:43:33 by emajuri          ###   ########.fr       */
+/*   Created: 2023/06/08 17:58:48 by emajuri           #+#    #+#             */
+/*   Updated: 2023/06/08 18:02:31 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "AMateria.hpp"
-#include "Character.hpp"
-#include "Ice.hpp"
-#include "ICharacter.hpp"
-#include "Cure.hpp"
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
 
-int main() {
-	Character x("x");
-	AMateria* ice = new Ice();
-	AMateria* ice2 = new Ice();
-	x.equip(ice);
-	x.equip(ice2);
-	x.unequip(1);
-	x.unequip(0);
-	std::cout << "end\n";
-	return (0);
-}
+#include "AMateria.hpp"
+
+class IMateriaSource {
+	public:
+		virtual ~IMateriaSource() {}
+		virtual void	learnMateria(AMateria*) = 0;
+		virtual AMateria*	createMateria(std::string const& type) = 0;
+};
+
+#endif
