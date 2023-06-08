@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Amateria.hpp                                       :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 13:01:24 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 12:27:17 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 13:02:33 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 #include <string>
 class ICharacter;
 
-class Amateria {
+class AMateria {
 	protected:
 		std::string	typeStr;
 
 	public:
-		Amateria();
-		Amateria(const Amateria& other);
-		Amateria&	operator=(const Amateria& other);
-		virtual ~Amateria();
+		AMateria();
+		AMateria(const AMateria& other);
+		AMateria&	operator=(const AMateria& other);
+		virtual ~AMateria();
 
-		Amateria(std::string const& type);
+		AMateria(std::string const& type);
 
 		std::string const& getType() const;
 
-		virtual Amateria*	clone() const = 0;
+		virtual AMateria*	clone() const = 0;
 		virtual void	use(ICharacter& target);
 };
 

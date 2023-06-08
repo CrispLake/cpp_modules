@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Amateria.cpp                                       :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 13:12:12 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 12:35:59 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 13:00:18 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Amateria.hpp"
+#include "AMateria.hpp"
 #include "ICharacter.hpp"
 #include <iostream>
 
-Amateria::Amateria() : typeStr("empty") {
+AMateria::AMateria() : typeStr("empty") {
 }
 
-Amateria::Amateria(std::string const& type) : typeStr(type) {
+AMateria::AMateria(std::string const& type) : typeStr(type) {
 }
 
-Amateria::Amateria(const Amateria& other) {
+AMateria::AMateria(const AMateria& other) {
 	typeStr = other.typeStr;
 }
 
-Amateria&	Amateria::operator=(const Amateria& other) {
+AMateria&	AMateria::operator=(const AMateria& other) {
 	if (this != &other) {
 		typeStr = other.typeStr;
 	}
 	return (*this);
 }
 
-Amateria::~Amateria() {
+AMateria::~AMateria() {
 }
 
-std::string const&	Amateria::getType() const {
+std::string const&	AMateria::getType() const {
 	return (typeStr);
 }
 
-void	Amateria::use(ICharacter& target) {
+void	AMateria::use(ICharacter& target) {
 	std::cout << target.getName() << " Error\n";
 }

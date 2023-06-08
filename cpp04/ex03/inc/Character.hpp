@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:38:07 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/07 17:12:59 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 12:57:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class Character {
 	private:
 		std::string	name;
-		Amateria*	inventory[4];
+		AMateria*	inventory[4];
 	public:
 		Character();
 		Character(std::string Name);
@@ -28,7 +28,7 @@ class Character {
 		Character&	operator=(const Character& other);
 		~Character();
 		std::string const&	getName() const;
-		void	equip(Amateria* m);
+		void	equip(AMateria* m);
 		void	unequip(int idx);
 		void	use(int idx, ICharacter& target);
 };

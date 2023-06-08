@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:27:00 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 12:15:36 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 13:03:04 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Cure&	Cure::operator=(const Cure& other) {
 Cure::~Cure() {
 }
 
-Amateria*	Cure::clone() const {
+AMateria*	Cure::clone() const {
 	return (new Cure(*this));
 }
 

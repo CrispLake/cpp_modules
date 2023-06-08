@@ -6,23 +6,23 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:11:49 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 12:05:52 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 13:00:02 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICE_HPP
 #define ICE_HPP
 
-#include "Amateria.hpp"
+#include "AMateria.hpp"
 
-class Ice : public Amateria {
+class Ice : public AMateria {
 	public:
 		Ice();
 		Ice(const Ice& other);
 		Ice&	operator=(const Ice& other);
 		~Ice();
 
-		Amateria*	clone() const;
+		AMateria*	clone() const;
 		void	use(ICharacter& target);
 };
 

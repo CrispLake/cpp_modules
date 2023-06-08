@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:14:59 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 12:14:17 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/08 13:03:08 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Ice&	Ice::operator=(const Ice& other) {
 Ice::~Ice() {
 }
 
-Amateria*	Ice::clone() const {
+AMateria*	Ice::clone() const {
 	return (new Ice(*this));
 }
 
