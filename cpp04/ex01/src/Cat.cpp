@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:44:39 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/06 11:12:30 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/26 15:29:19 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ Cat&	Cat::operator=(const Cat& other) {
 	std::cout << "Cat copy assigment operator called\n";
 	if (this == &other) {
 		type = other.type;
+		if (brain)
+			delete brain;
 		brain = new Brain(*other.brain);
 	}
 	return (*this);

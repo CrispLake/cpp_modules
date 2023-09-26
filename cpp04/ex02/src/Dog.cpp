@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:44:41 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/06 11:12:20 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/09/26 15:39:44 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ Dog&	Dog::operator=(const Dog& other) {
 	std::cout << "Dog copy assigment operator called\n";
 	if (this == &other) {
 		type = other.type;
-		*brain = *other.brain;
+		if (brain)
+			delete brain;
+		brain = new Brain(*other.brain);
 	}
 	return (*this);
 }
