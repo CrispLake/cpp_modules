@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 18:31:48 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 19:26:07 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/20 13:28:09 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 MateriaSource::MateriaSource() {
 	for (int i = 0; i < 4; i++)
-		inv[i] = nullptr;
+		inv[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& other) {
@@ -22,7 +22,7 @@ MateriaSource::MateriaSource(const MateriaSource& other) {
 		if (other.inv[i])
 			this->inv[i] = other.inv[i]->clone();
 		else
-			this->inv[i] = nullptr;
+			this->inv[i] = NULL;
 	}
 }
 
@@ -35,7 +35,7 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& other) {
 			if (other.inv[i])
 				this->inv[i] = other.inv[i]->clone();
 			else
-				this->inv[i] = nullptr;
+				this->inv[i] = NULL;
 		}
 	}
 	return (*this);
@@ -43,7 +43,7 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& other) {
 
 MateriaSource::~MateriaSource() {
 	for (int i = 0; i < 4; i++) {
-		if (inv[i] != nullptr) {
+		if (inv[i] != NULL) {
 			delete inv[i];
 		}
 	}
@@ -51,7 +51,7 @@ MateriaSource::~MateriaSource() {
 
 void	MateriaSource::learnMateria(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (inv[i] == nullptr) {
+		if (inv[i] == NULL) {
 			inv[i] = m;
 			break;
 		}
@@ -60,7 +60,7 @@ void	MateriaSource::learnMateria(AMateria* m) {
 
 AMateria*	MateriaSource::createMateria(std::string const& type) {
 	for (int i = 0; i < 4; i++) {
-		if (inv[i] != nullptr && inv[i]->getType() == type) {
+		if (inv[i] != NULL && inv[i]->getType() == type) {
 			return (inv[i]->clone());
 		}
 	}

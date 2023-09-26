@@ -6,28 +6,28 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 16:42:14 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 19:26:18 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/20 13:27:36 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 #include <iostream>
 
-Character::Character() : name("Unnamed"), trash(nullptr) {
+Character::Character() : name("Unnamed"), trash(NULL) {
 	for (int i = 0; i < 4; i++)
-		inventory[i] = nullptr;
+		inventory[i] = NULL;
 }
 
-Character::Character(const std::string Name) : name(Name), trash(nullptr) {
+Character::Character(const std::string Name) : name(Name), trash(NULL) {
 	for (int i = 0; i < 4; i++)
-		inventory[i] = nullptr;
+		inventory[i] = NULL;
 }
 
-Character::Character(const Character& other) : trash(nullptr) {
+Character::Character(const Character& other) : trash(NULL) {
 	name = other.name;
 	for (int i = 0; i < 4; i++) {
 		if (other.inventory[i])
-			this->inventory[i] = other.inventory[i]->clone();
+			inventory[i] = other.inventory[i]->clone();
 	}
 }
 
@@ -35,31 +35,31 @@ Character&	Character::operator=(const Character& other) {
 	if (this != &other) {
 		name = other.name;
 		for (int i = 0; i < 4; i++) {
-			if (this->inventory[i]) {
-				delete this->inventory[i];
+			if (inventory[i]) {
+				delete inventory[i];
 			}
 			if (other.inventory[i])
-				this->inventory[i] = other.inventory[i]->clone();
+				inventory[i] = other.inventory[i]->clone();
 			else
-				this->inventory[i] = nullptr;
+				inventory[i] = NULL;
 
 		}
-		if (this->trash != nullptr) {
-			delete this->trash;
+		if (trash != NULL) {
+			delete trash;
 		}
-		this->trash = nullptr;
+		trash = NULL;
 	}
 	return (*this);
 }
 
 Character::~Character() {
 	for (int i = 0; i < 4; i++) {
-		if (inventory[i] != nullptr) {
+		if (inventory[i] != NULL) {
 			delete inventory[i];
 		}
 	}
-	if (this->trash != nullptr)
-		delete this->trash;
+	if (trash != NULL)
+		delete trash;
 }
 
 std::string const&	Character::getName() const {
@@ -68,7 +68,7 @@ std::string const&	Character::getName() const {
 
 void	Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
-		if (inventory[i] == nullptr) {
+		if (inventory[i] == NULL) {
 			inventory[i] = m;
 			break;
 		}
@@ -76,16 +76,16 @@ void	Character::equip(AMateria* m) {
 }
 
 void	Character::unequip(int idx) {
-	if (idx < 4 && idx > -1 && inventory[idx] != nullptr) {
-		if (trash == nullptr)
+	if (idx < 4 && idx > -1 && inventory[idx] != NULL) {
+		if (trash == NULL)
 			trash = new TrashCan(inventory[idx]);
 		else
 			trash->push(inventory[idx]);
-		inventory[idx] = nullptr;
+		inventory[idx] = NULL;
 	}
 }
 
 void	Character::use(int idx, ICharacter& target) {
-	if (idx < 4 && idx > -1 && inventory[idx] != nullptr)
+	if (idx < 4 && idx > -1 && inventory[idx] != NULL)
 		inventory[idx]->use(target);
 }

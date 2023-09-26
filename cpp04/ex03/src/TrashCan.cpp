@@ -6,16 +6,16 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:57:46 by emajuri           #+#    #+#             */
-/*   Updated: 2023/06/08 17:41:48 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/06/20 13:28:26 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "TrashCan.hpp"
 
-TrashCan::TrashCan() : next(nullptr), materia(nullptr) {
+TrashCan::TrashCan() : next(NULL), materia(NULL) {
 }
 
-TrashCan::TrashCan(AMateria* m) : next(nullptr), materia(m) {
+TrashCan::TrashCan(AMateria* m) : next(NULL), materia(m) {
 }
 
 TrashCan::TrashCan(const TrashCan& other) {
@@ -32,15 +32,15 @@ TrashCan&	TrashCan::operator=(const TrashCan& other) {
 }
 
 TrashCan::~TrashCan() {
-	if (materia != nullptr)
+	if (materia != NULL)
 		delete materia;
-	if (next != nullptr)
+	if (next != NULL)
 		delete next;
 }
 
 void	TrashCan::push(AMateria* m) {
 	TrashCan* tmp = this;
-	while (tmp->next != nullptr)
+	while (tmp->next != NULL)
 		tmp = tmp->next;
 	tmp->next = new TrashCan(m);
 }
