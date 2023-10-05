@@ -6,35 +6,20 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:10:48 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/04 18:05:14 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/05 12:51:25 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-Bureaucrat::Bureaucrat() : name("Unnamed"), grade(GRADE_LOWEST) {
-}
-
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {
+Bureaucrat::Bureaucrat(std::string const& name, int grade) throw(GradeTooHighException, GradeTooLowException)
+: name(name) {
 	if (grade < GRADE_HIGHEST)
 		throw(GradeTooHighException());
 	if (grade > GRADE_LOWEST)
 		throw(GradeTooLowException());
 	this->grade = grade;
-}
-
-Bureaucrat::Bureaucrat(const Bureaucrat& other) {
-	name = other.name;
-	grade = other.grade;
-}
-
-Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other) {
-	if (this != &other){
-		name = other.name;
-		grade = other.grade;
-	}
-	return (*this);
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -53,13 +38,13 @@ int	Bureaucrat::getGrade() const {
 	return (grade);
 }
 
-void	Bureaucrat::gradeIncrement() {
+void	Bureaucrat::gradeIncrement() throw(GradeTooHighException) {
 	if (grade - 1 < GRADE_HIGHEST)
 		throw(GradeTooHighException());
 	grade--;
 }
 
-void	Bureaucrat::gradeDecrement() {
+void	Bureaucrat::gradeDecrement() throw(GradeTooLowException){
 	if (grade + 1 > GRADE_LOWEST)
 		throw(GradeTooLowException());
 	grade++;

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:07:32 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/04 18:03:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/05 13:17:45 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,16 @@ std::ostream&	operator<<(std::ostream& os, const class Bureaucrat& ref);
 class Bureaucrat {
 	public:
 
-		Bureaucrat();
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat(const Bureaucrat& other);
-		Bureaucrat&	operator=(const Bureaucrat& other);
+		Bureaucrat(std::string const& name, int grade) throw(GradeTooHighException, GradeTooLowException);
 		~Bureaucrat();
 
 		std::string	getName() const;
 		int			getGrade() const;
 
-		void		gradeIncrement();
-		void		gradeDecrement();
+		void		gradeIncrement() throw(GradeTooHighException);
+		void		gradeDecrement() throw(GradeTooLowException);
 
 	private:
-
-		std::string	name;
-		int			grade;
 
 		class GradeTooHighException : public std::exception {
 			const char* what() const throw();
@@ -49,6 +43,13 @@ class Bureaucrat {
 		class GradeTooLowException : public std::exception {
 			const char* what() const throw();
 		};
+
+		std::string const	name;
+		int					grade;
+
+		Bureaucrat();
+		Bureaucrat(const Bureaucrat& other);
+		Bureaucrat&	operator=(const Bureaucrat& other);
 };
 
 #endif

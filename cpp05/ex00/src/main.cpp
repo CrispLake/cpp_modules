@@ -3,22 +3,40 @@
 
 int main()
 {
+	Bureaucrat	Matias("Matias", 150);
+	Bureaucrat	Keijo("Keijo", 1);
+	std::cout << Matias;
+	std::cout << Keijo.getName() << " " << Keijo.getGrade() << "\n";
+
+	std::cout << "\nIncrement and decrement\n";
 	try {
-		Bureaucrat	x("Matias", 150);
-		Bureaucrat	d("Keijo", 1);
-		// Bureaucrat	y("Jonne", 190);
-		// Bureaucrat	z("Kalle", 0);
-		std::cout << x;
-		std::cout << d.getName() << " " << d.getGrade() << "\n";
-		// x.gradeDecrement();
-		x.gradeIncrement();
-		std::cout << x;
-		// d.gradeIncrement();
-		d.gradeDecrement();
-		std::cout << d;
+		Matias.gradeIncrement();
+		std::cout << Matias;
+		Keijo.gradeDecrement();
+		std::cout << Keijo;
 	}
-	catch (std::exception &e) {
-		std::cout << e.what() << "\n";
-}
+	catch (std::exception &e) {std::cout << e.what() << "\n";}
+
+	std::cout << "\nOver increment and decrement\n";
+	try {
+		Matias.gradeDecrement();
+		Matias.gradeDecrement();
+	}
+	catch (std::exception &e) {std::cout << e.what() << "\n";}
+
+	try {
+		Keijo.gradeIncrement();
+		Keijo.gradeIncrement();
+	}
+	catch (std::exception &e) {std::cout << e.what() << "\n";}
+
+
+	std::cout << "\nCreating class with too high or too low grade\n";
+	try {Bureaucrat	Kalle("Kalle", 0);}
+	catch (std::exception &e) {std::cout << e.what() << "\n";}
+
+	try {Bureaucrat	Jonne("Jonne", 190);}
+	catch (std::exception &e) {std::cout << e.what() << "\n";}
+
 	return 0;
 }
