@@ -6,7 +6,7 @@
 #    By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 12:50:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/10/05 14:15:16 by emajuri          ###   ########.fr        #
+#    Updated: 2023/10/05 19:04:27 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,13 +22,11 @@ OBJ = $(addprefix obj/,$(SRC:%.cpp=%.o))
 DEP = $(OBJ:%.o=%.d)
 
 #folders
-INC = ./inc
-SRC_DIR = ./src
 OBJ_DIR = ./obj
 
 #flags
 WWW = -Wall -Wextra -Werror
-FLAGS = $(WWW) -std=c++98 -I inc
+FLAGS = $(WWW) -std=c++98
 
 .PHONY: all clean fclean re
 
@@ -48,7 +46,7 @@ fclean: clean
 
 -include $(DEP)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(OBJ_DIR)/%.o: %.cpp
 	c++ $(FLAGS) -MMD -c $< -o $@
 
 re: fclean all
