@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:02:56 by emajuri           #+#    #+#             */
-/*   Updated: 2023/05/15 18:38:25 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/09 15:57:05 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ int	PhoneBook::list() {
 		if (!contacts[i].isEmpty())
 			contacts[i].printLine(i);
 	}
-	return (0); } int	PhoneBook::search() { std::string	input;
+	return (0);
+}
+    
+int	PhoneBook::search() {
+    std::string	input;
 	int	retry = 5;
 	if (list())
 		return (1);
