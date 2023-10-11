@@ -26,7 +26,7 @@ class AForm
 			std::string const& name,
 			int minimumGradeToSign,
 			int minimumGradeToExecute);
-		~AForm();
+		virtual ~AForm();
 	
 		std::string 	getName() const;
 		bool    		getIsSigned() const;

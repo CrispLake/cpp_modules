@@ -43,11 +43,13 @@ int main()
     
     form = formMachine.makeForm("PresidentialPardonForm", "target");
     std::cout << *form << "\n";
+    delete form;
     form = formMachine.makeForm("RobotomyRequestForm", "target");
     std::cout << *form << "\n";
+    delete form;
     form = formMachine.makeForm("ShrubberyCreationForm", "target");
     std::cout << *form << "\n";
-    formMachine.makeForm("noForm", "target");
+    delete form;
 
     return 0;
 }
