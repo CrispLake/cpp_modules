@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:19:35 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/13 13:22:30 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/13 16:22:55 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static type analyze(std::string const& str)
 
 static void    convertChar(char c)
 {
-    std::cout << "char: " << c << "\n";
+    std::cout << "char: '" << c << "'\n";
     std::cout << "int: " << static_cast<int>(c) << "\n";
     std::cout << "float: " << static_cast<float>(c) << "\n";
     std::cout << "double: " << static_cast<double>(c) << "\n";
@@ -85,7 +85,7 @@ static void    convertInt(std::stringstream &ss)
     {
         char c = static_cast<char>(nb);
         if (std::isprint(c) && c != ' ')
-            std::cout << "char: " << c << "\n";
+            std::cout << "char: '" << c << "'\n";
         else
             std::cout << "char: Non displayable\n";
     }
@@ -132,7 +132,7 @@ static void    convertFloat(std::stringstream &ss)
     {
         char c = static_cast<char>(nb);
         if (std::isprint(c) && c != ' ')
-            std::cout << "char: " << c << "\n";
+            std::cout << "char: '" << c << "'\n";
         else
             std::cout << "char: Non displayable\n";
     }
@@ -168,7 +168,7 @@ static void    convertDouble(std::stringstream &ss)
     {
         char c = static_cast<char>(nb);
         if (std::isprint(c) && c != ' ')
-            std::cout << "char: " << c << "\n";
+            std::cout << "char: '" << c << "'\n";
         else
             std::cout << "char: Non displayable\n";
     }
