@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:19:35 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/12 18:51:25 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/13 12:41:36 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void    convertInt(std::stringstream &ss)
         std::cout << "invalid input\n";
         return;
     }
-    if (std::numeric_limits<char>::min() >= nb && nb <= std::numeric_limits<char>::max())
+    if (std::numeric_limits<char>::min() <= nb && nb <= std::numeric_limits<char>::max())
     {
         char c = static_cast<char>(nb);
-        if (std::isprint(nb) && nb != ' ')
+        if (std::isprint(c) && c != ' ')
             std::cout << "char: " << c << "\n";
         else
             std::cout << "char: Non displayable\n";
@@ -96,6 +96,22 @@ void    convertInt(std::stringstream &ss)
     std::cout << "double: " << static_cast<double>(nb) << "\n";
 }
 
+template<typename T>
+void    handleInfAndNan(T nb)
+{
+    std::cout << "char: impossible\n";
+    std::cout << "int: impossible\n";
+    if (isinf(nb))
+    {
+        std::cout << "float: " << (nb >= 0 ? "+inff" : "-inff") << "\n";
+        std::cout << "double: " << (nb >= 0 ? "+inf" : "-inf") << "\n";
+    }
+    else
+    {
+        std::cout << "float: nanf\n";
+        std::cout << "float: nan\n";
+    }
+}
 void    convertFloat(std::stringstream &ss)
 {
     float   nb;
@@ -105,18 +121,23 @@ void    convertFloat(std::stringstream &ss)
         std::cout << "invalid input\n";
         return;
     }
-    if (std::numeric_limits<char>::min() >= nb && nb <= std::numeric_limits<char>::max()
+    if (isinf(nb) || isnan(nb))
+    {
+        handleInfAndNan<float>(nb);
+        return;
+    }
+    if (std::numeric_limits<char>::min() <= nb && nb <= std::numeric_limits<char>::max()
         && !std::isinf(nb) && !std::isnan(nb))
     {
         char c = static_cast<char>(nb);
-        if (std::isprint(nb) && nb != ' ')
+        if (std::isprint(c) && c != ' ')
             std::cout << "char: " << c << "\n";
         else
             std::cout << "char: Non displayable\n";
     }
     else
         std::cout << "char: impossible\n";
-    if (std::numeric_limits<int>::min() >= nb && nb <= std::numeric_limits<int>::max()
+    if (std::numeric_limits<int>::min() <= nb && nb <= std::numeric_limits<int>::max()
         && !std::isinf(nb) && !std::isnan(nb))
     {
         std::cout << "int: " << static_cast<int>(nb) << "\n";
@@ -129,32 +150,37 @@ void    convertFloat(std::stringstream &ss)
 
 void    convertDouble(std::stringstream &ss)
 {
-    float   nb;
+    double  nb;
     
     if (!(ss >> nb))
     {
         std::cout << "invalid input\n";
         return;
     }
-    if (std::numeric_limits<char>::min() >= nb && nb <= std::numeric_limits<char>::max()
+    if (isinf(nb) || isnan(nb))
+    {
+        handleInfAndNan<double>(nb);
+        return;
+    }
+    if (std::numeric_limits<char>::min() <= nb && nb <= std::numeric_limits<char>::max()
         && !std::isinf(nb) && !std::isnan(nb))
     {
         char c = static_cast<char>(nb);
-        if (std::isprint(nb) && nb != ' ')
+        if (std::isprint(c) && c != ' ')
             std::cout << "char: " << c << "\n";
         else
             std::cout << "char: Non displayable\n";
     }
     else
         std::cout << "char: impossible\n";
-    if (std::numeric_limits<int>::min() >= nb && nb <= std::numeric_limits<int>::max()
+    if (std::numeric_limits<int>::min() <= nb && nb <= std::numeric_limits<int>::max()
         && !std::isinf(nb) && !std::isnan(nb))
     {
         std::cout << "int: " << static_cast<int>(nb) << "\n";
     }
     else
         std::cout << "int: impossible\n";
-    if (std::numeric_limits<float>::min() >= nb && nb <= std::numeric_limits<float>::max())
+    if (std::numeric_limits<float>::min() <= nb && nb <= std::numeric_limits<float>::max())
     {
         std::cout << "float: " << static_cast<float>(nb) << "\n";
     }
@@ -166,6 +192,8 @@ void    convertDouble(std::stringstream &ss)
 void ScalarConverter::convert(std::string str)
 {
     type    t = analyze(str);
+    if (t == FLOAT)
+        str.erase(str.length() - 1, 1);
     if (str == "+inff")
         str = "+inf";
     if (str == "-inff")
