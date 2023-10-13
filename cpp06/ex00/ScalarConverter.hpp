@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:18:03 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/12 17:36:18 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/13 13:27:38 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ScalarConverter
     private:
         ScalarConverter();
         ScalarConverter(ScalarConverter const& ref);
-        ScalarConverter operator=(ScalarConverter const& ref);
+        ScalarConverter& operator=(ScalarConverter const& ref);
         ~ScalarConverter();
 };
 
