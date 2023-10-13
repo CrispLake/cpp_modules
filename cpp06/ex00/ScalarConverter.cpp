@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:19:35 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/13 12:41:36 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/13 13:22:30 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static type analyze(std::string const& str)
     return (INT);
 }
 
-void    convertChar(char c)
+static void    convertChar(char c)
 {
     std::cout << "char: " << c << "\n";
     std::cout << "int: " << static_cast<int>(c) << "\n";
@@ -72,7 +72,7 @@ void    convertChar(char c)
     std::cout << "double: " << static_cast<double>(c) << "\n";
 }
 
-void    convertInt(std::stringstream &ss)
+static void    convertInt(std::stringstream &ss)
 {
     int nb;
     
@@ -97,7 +97,7 @@ void    convertInt(std::stringstream &ss)
 }
 
 template<typename T>
-void    handleInfAndNan(T nb)
+static void    handleInfAndNan(T nb)
 {
     std::cout << "char: impossible\n";
     std::cout << "int: impossible\n";
@@ -112,7 +112,8 @@ void    handleInfAndNan(T nb)
         std::cout << "float: nan\n";
     }
 }
-void    convertFloat(std::stringstream &ss)
+
+static void    convertFloat(std::stringstream &ss)
 {
     float   nb;
     
@@ -148,7 +149,7 @@ void    convertFloat(std::stringstream &ss)
     std::cout << "double: " << static_cast<double>(nb) << "\n";
 }
 
-void    convertDouble(std::stringstream &ss)
+static void    convertDouble(std::stringstream &ss)
 {
     double  nb;
     
