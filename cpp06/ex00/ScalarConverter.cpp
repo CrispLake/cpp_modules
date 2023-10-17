@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:19:35 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/17 14:41:19 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/17 15:13:11 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,23 +96,6 @@ static void    convertInt(std::stringstream &ss)
     std::cout << "double: " << static_cast<double>(nb) << "\n";
 }
 
-template<typename T>
-static void    handleInfAndNan(T nb)
-{
-    std::cout << "char: impossible\n";
-    std::cout << "int: impossible\n";
-    if (isinf(nb))
-    {
-        std::cout << "float: " << (nb >= 0 ? "+inff" : "-inff") << "\n";
-        std::cout << "double: " << (nb >= 0 ? "+inf" : "-inf") << "\n";
-    }
-    else
-    {
-        std::cout << "float: nanf\n";
-        std::cout << "float: nan\n";
-    }
-}
-
 static void    convertFloat(std::stringstream &ss)
 {
     float   nb;
@@ -120,11 +103,6 @@ static void    convertFloat(std::stringstream &ss)
     if (!(ss >> nb))
     {
         std::cout << "invalid input\n";
-        return;
-    }
-    if (isinf(nb) || isnan(nb))
-    {
-        handleInfAndNan<float>(nb);
         return;
     }
     if (std::numeric_limits<char>::min() <= nb && nb <= std::numeric_limits<char>::max()
@@ -158,11 +136,6 @@ static void    convertDouble(std::stringstream &ss)
         std::cout << "invalid input\n";
         return;
     }
-    if (isinf(nb) || isnan(nb))
-    {
-        handleInfAndNan<double>(nb);
-        return;
-    }
     if (std::numeric_limits<char>::min() <= nb && nb <= std::numeric_limits<char>::max()
         && !std::isinf(nb) && !std::isnan(nb))
     {
@@ -181,12 +154,10 @@ static void    convertDouble(std::stringstream &ss)
     }
     else
         std::cout << "int: impossible\n";
-    if (-std::numeric_limits<float>::max() <= nb && nb <= std::numeric_limits<float>::max())
-    {
-        std::cout << "float: " << static_cast<float>(nb) << "\n";
-    }
-    else
+    if (-std::numeric_limits<float>::max() > nb || nb > std::numeric_limits<float>::max())
         std::cout << "float: impossible\n";
+    else
+        std::cout << "float: " << static_cast<float>(nb) << "\n";
     std::cout << "double: " << nb << "\n";
 }
 
@@ -195,12 +166,6 @@ void ScalarConverter::convert(std::string str)
     type    t = analyze(str);
     if (t == FLOAT)
         str.erase(str.length() - 1, 1);
-    if (str == "+inff")
-        str = "+inf";
-    if (str == "-inff")
-        str = "-inf";
-    if (str == "nanf")
-        str = "nan";
     std::stringstream   ss(str);
     switch (t)
     {
