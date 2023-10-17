@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:19:35 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/13 16:22:55 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/17 14:41:19 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ static void    convertDouble(std::stringstream &ss)
     }
     else
         std::cout << "int: impossible\n";
-    if (std::numeric_limits<float>::min() <= nb && nb <= std::numeric_limits<float>::max())
+    if (-std::numeric_limits<float>::max() <= nb && nb <= std::numeric_limits<float>::max())
     {
         std::cout << "float: " << static_cast<float>(nb) << "\n";
     }
