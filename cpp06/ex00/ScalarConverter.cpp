@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:19:35 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/17 15:13:11 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/19 13:34:22 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static type analyze(std::string const& str)
         {
             for (int j = i + 1; j < len; j++)
             {
-                if (j == len - 1 && str[j] == 'f')
+                if (j == len - 1 && str[j] == 'f' && str[j - 1] != '.')
                     return (FLOAT);
                 if (!std::isdigit(str[j]))
                     return (NONE);
