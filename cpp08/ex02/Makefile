@@ -6,15 +6,14 @@
 #    By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 12:50:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/10/18 12:27:11 by emajuri          ###   ########.fr        #
+#    Updated: 2023/10/24 13:47:22 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = main
 
-SRC = main.cpp	\
-Span.cpp
+SRC = main.cpp
 
 OBJ = $(addprefix obj/,$(SRC:%.cpp=%.o))
 
