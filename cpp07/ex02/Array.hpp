@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:58:00 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/17 13:19:16 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/24 14:56:05 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,14 @@ class Array
                 delete[] array;
         }
 
-        T&   operator[](unsigned int i) const
+        T&   operator[](unsigned int i)
+        {
+            if (i >= len || i < 0)
+                throw (std::out_of_range("Index out of bounds"));
+            return (array[i]);
+        }
+
+        const T&   operator[](unsigned int i) const
         {
             if (i >= len || i < 0)
                 throw (std::out_of_range("Index out of bounds"));

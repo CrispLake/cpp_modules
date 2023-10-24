@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:01:33 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/17 13:58:50 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/24 15:02:45 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,19 @@ int main()
     {
         std::cerr << e.what() << '\n';
     }
+
+    Array<int> z;
+
+    z = x;
+    std::cout << "z: " << z[5] << "\n";
+    z[5] = 555;
+    std::cout << "x: " << x[5] << "\n";
+    std::cout << "z: " << z[5] << "\n";
+
+    const Array<int> y(x);
+
+    std::cout << "y: " << y[5] << "\n";
+    // y[5] = 333;
+
     return (0);
 }
