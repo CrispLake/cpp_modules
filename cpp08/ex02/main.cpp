@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:56:24 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/24 13:46:20 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/26 12:46:17 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main()
         std::cout << *it2 << std::endl;
         ++it2;
     }
-    mstack.push(42);
+    listtest.push_back(42);
 
 
     std::cout << "\n\n\n";
@@ -70,5 +70,29 @@ int main()
     std::cout << "\n\n";
     std::cout << s.top() << std::endl;
     std::cout << test.top() << std::endl;
+
+
+    std::cout << "\n\n\n";
+    const std::list<int> constList(listtest);
+    const MutantStack<int> constMutant(mstack);
+
+
+    MutantStack<int>::const_iterator constit = constMutant.begin();
+    MutantStack<int>::const_iterator constite = constMutant.end();
+    while (constit != constite)
+    {
+        std::cout << *constit << std::endl;
+        ++constit;
+    }
+    std::cout << "\n";
+
+    std::list<int>::const_iterator constit2 = constList.begin();
+    std::list<int>::const_iterator constite2 = constList.end();
+    while (constit2 != constite2)
+    {
+        std::cout << *constit2 << std::endl;
+        ++constit2;
+    }
+
     return 0;
 }

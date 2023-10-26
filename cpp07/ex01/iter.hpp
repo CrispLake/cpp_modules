@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:44:08 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/23 12:52:59 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/25 15:34:05 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,15 @@ void    iter(T* arr, std::size_t len, F f)
 }
 
 template<typename T>
-T    f(T x)
+void    f(T& x)
 {
-    return x + 1;
+    x += 1;
 }
 
 template<typename T>
-T    f2(T x)
+void    f2(T& x)
 {
     std::cout << x << "\n";
-    return x;
 }
 
 
