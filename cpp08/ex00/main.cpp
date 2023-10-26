@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:09:53 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/17 16:49:44 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/26 13:39:55 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,20 @@ int main()
     tmp = easyfind(x, 44);
     if (tmp != x.end())
         std::cout << *tmp << "\n";
+    else
+        std::cout << "Not found\n";
+
+    std::cout << "\n";
+    const std::vector<int> y(x);
+    std::vector<int>::const_iterator consttmp;
+    consttmp = easyfind(y, 555);
+    if (consttmp != y.end())
+        std::cout << *consttmp << "\n";
+    else
+        std::cout << "Not found\n";
+    consttmp = easyfind(y, 533);
+    if (consttmp != y.end())
+        std::cout << *consttmp << "\n";
     else
         std::cout << "Not found\n";
     return 0;
