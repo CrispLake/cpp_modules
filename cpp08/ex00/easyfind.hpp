@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:08:22 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/26 13:37:36 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/26 13:55:49 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define EASYFIND_HPP
 
 #include <algorithm>
-#include <iterator>
 
 template<typename T>
 typename T::iterator  easyfind(T& container, int match)

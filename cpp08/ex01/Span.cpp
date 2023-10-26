@@ -6,12 +6,11 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:32:33 by emajuri           #+#    #+#             */
-/*   Updated: 2023/10/19 14:40:51 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/10/26 13:55:02 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <iostream>
 #include <stdexcept>
 
 Span::Span(unsigned int size) : size(size), sorted(false)
@@ -61,7 +60,7 @@ int Span::shortestSpan()
         sorted = true;
     }
     long tmp;
-    long shortest = 9999999999999999;
+    long shortest = std::numeric_limits<long>::max();
     for (std::vector<int>::iterator it = vec.begin(); it + 1 != vec.end(); ++it)
     {
         tmp = *(it + 1) - *it;
