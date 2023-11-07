@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:42:37 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/06 15:06:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/07 13:54:48 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ class BitcoinExchange
         BitcoinExchange&    operator=(BitcoinExchange const& ref);
         ~BitcoinExchange();
 
-        void        Exchange(std::string file);
-        float       getRateByDate(std::string const& date);
+        void        Exchange(std::string file) const;
+        float       getRateByDate(std::string const& date) const;
 
     private:
         std::map<std::string, float> rates;
 
-        std::string getDateFromLine(std::string line);
-        bool        isValidLine(std::string line);
-        bool        isValidDate(std::string line);
+        std::string getDateFromLine(std::string line) const;
+        bool        isValidLine(std::string line) const;
+        bool        isValidDate(std::string line) const;
+        bool        isValidValue(std::string line) const;
 };

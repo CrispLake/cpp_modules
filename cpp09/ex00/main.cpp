@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:31:05 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/06 15:12:31 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/07 12:53:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int main(int argc, char const *argv[])
     try
     {
         BitcoinExchange btc;
-        // btc.Exchange(argv[1]);
-        // std::cout << btc.getRateByDate("20090204") << "\n";
+        btc.Exchange(argv[1]);
+        // std::cout << btc.getRateByDate("20220402") << "\n";
     }
     catch(const std::exception& e)
     {
