@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:42:37 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/07 13:54:48 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:58:20 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 class BitcoinExchange
 {
-    //YYYYMMDD
     public:
         BitcoinExchange();
         BitcoinExchange(BitcoinExchange const& ref);

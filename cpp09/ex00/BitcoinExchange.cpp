@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:31 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/07 15:18:39 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:58:44 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const& ref)
 {
-    (void)ref;
+    rates = ref.rates;
 }
 
 BitcoinExchange&    BitcoinExchange::operator=(BitcoinExchange const& ref)
 {
-    (void)ref;
+    if (this != &ref)
+        rates = ref.rates;
     return (*this);
 }
 
