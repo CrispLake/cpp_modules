@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:31 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/07 15:58:44 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/10 12:05:24 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ bool    BitcoinExchange::isValidValue(std::string line) const
     std::stringstream(valueStr) >> value;
     if (valueStr.find(".") != std::string::npos)
         valueStr = valueStr.substr(0, valueStr.find("."));
-        if (valueStr == "2147483647")
+        if (valueStr == "1000")
             return (false);
-    if (value < 0 || (valueStr.length() == 10 && valueStr > "2147483647"))
+    if (value < 0 || (valueStr.length() == 10 && valueStr > "1000"))
         return (false);
     return (true);
 }
