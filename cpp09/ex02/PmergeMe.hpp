@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:30:46 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/14 18:18:47 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/15 13:43:55 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ class PmergeMe
         bool    vector_read(const char **argv);
         bool    vector_sort(const char **argv);
         void    vector_merge_insertion_sort(
-                                    vec_iterator first,
-                                    vec_iterator last,
+                                    vec_iterator const first,
+                                    vec_iterator const last,
                                     std::size_t stride);
 
         //2nd container specific
@@ -74,6 +74,7 @@ class PmergeMe
         {
             for (T it = begin; it < end; it += stride * 2)
             {
+                std::cout << "|" << *it << " < " << *(it + stride) << "|\n";
                 if (compare(*it, *(it + stride)))
                     std::swap(*it, *(it + stride));
             }

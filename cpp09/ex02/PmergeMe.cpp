@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/14 18:40:32 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/20 15:56:26 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <sstream>
 #include <limits>
 #include <algorithm>
+#include <cmath>
 
 PmergeMe::PmergeMe()
 {}
@@ -73,24 +74,27 @@ bool    PmergeMe::vector_sort(const char **argv)
     return true;
 }
 
-#include <cmath>
 void    PmergeMe::vector_merge_insertion_sort(
-    vec_iterator first,
-    vec_iterator last,
+    vec_iterator const first,
+    vec_iterator const last,
     std::size_t stride)
 {
-    for (vec_iterator it = first; it < last; it += stride)
-        std::cout << *it << " ";
-    std::cout << "\n\n";
-
     size_t size = distance(first, last, stride);
     if (size < 2)
         return;
 
+    std::cout << "Size: " << size << "\n";
+    for (vec_iterator it = first; it < last; it += stride)
+        std::cout << *it << " ";
+    std::cout << "\n";
+
     bool has_extra = size % 2;
-    vec_iterator end = has_extra ? last : last - stride;
+    std::cout << "has extra: " << (has_extra ? "True\n" : "False\n");
+    vec_iterator end = has_extra ? (last - stride) : last;
+    std::cout << "Last: " << *last << " | last - 1: " << *(last - stride) << " | End: " << *end << "\n";
 
     swap_pairs(first, end, stride);
+    std::cout << "\n\n";
     vector_merge_insertion_sort(first, end, stride * 2);
 
     std::vector<int> chain;
@@ -106,10 +110,12 @@ void    PmergeMe::vector_merge_insertion_sort(
     }
 
     if (has_extra)
-        pend.push_back(*last);
+        pend.push_back(*end);
 
     std::cout << "Recursive call: " << log2(stride) << "\n";
+    std::cout << "Mainlen: " << chain.size() << "\n";
     print_container(chain.begin(), chain.end());
+    std::cout << "pendlen: " << pend.size() << "\n";
     std::cout << "      ";
     print_container(pend.begin(), pend.end());
     std::cout << "\n\n";
