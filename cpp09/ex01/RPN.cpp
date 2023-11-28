@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:02:52 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/07 17:07:07 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/28 12:05:48 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,14 @@ void    RPN::calculate(std::string calc)
         if (*it == '-')
             numbers.push(nb2 - nb1);
         if (*it == '/')
+        {
+            if (nb1 == 0)
+            {
+                std::cout << "Error: Cannot do division by zero\n";
+                return;
+            }
             numbers.push(nb2 / nb1);
+        }
         if (*it == '*')
             numbers.push(nb2 * nb1);
     }
