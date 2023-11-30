@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/20 15:56:26 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/30 13:50:47 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ PmergeMe::~PmergeMe()
 
 void    PmergeMe::sort(const char **argv)
 {
-    std::cout << "Started vecSort\n";
+    std::cout << "Started vecSort with: ";
     //time start
     if (!vector_sort(argv))
         return;
     //time end
-    std::cout << "Ended vecSort\n";
+    std::cout << "Ended vecSort with: ";
+    print_container(m_numbers.begin(), m_numbers.end());
     //time start
     // listSort(argv);
     //time end
@@ -69,8 +70,8 @@ bool    PmergeMe::vector_sort(const char **argv)
 {
     if (!vector_read(argv))
         return false;
+    print_container(m_numbers.begin(), m_numbers.end());
     vector_merge_insertion_sort(m_numbers.begin(), m_numbers.end(), 1);
-    // print_container(m_numbers.begin(), m_numbers.end());
     return true;
 }
 
@@ -97,6 +98,11 @@ void    PmergeMe::vector_merge_insertion_sort(
     std::cout << "\n\n";
     vector_merge_insertion_sort(first, end, stride * 2);
 
+    std::cout << "Size: " << size << "\n";
+    for (vec_iterator it = first; it < last; it += stride)
+        std::cout << *it << " ";
+    std::cout << "\n";
+
     std::vector<int> chain;
     std::vector<int> pend;
 
@@ -113,14 +119,23 @@ void    PmergeMe::vector_merge_insertion_sort(
         pend.push_back(*end);
 
     std::cout << "Recursive call: " << log2(stride) << "\n";
-    std::cout << "Mainlen: " << chain.size() << "\n";
     print_container(chain.begin(), chain.end());
-    std::cout << "pendlen: " << pend.size() << "\n";
     std::cout << "      ";
     print_container(pend.begin(), pend.end());
+
+    vec_iterator chain_it = chain.begin() + 2;
+    vec_iterator pend_it = pend.begin();
+
+    //implement insertion sort
+    //TEMP ->
+    (void)chain_it;
+    for (vec_iterator it = pend_it; it < pend.end(); it++)
+    {
+        chain.insert(chain.begin(), *it);
+    }
+    // <- TEMP
+
+    std::cout << "End result\n";
+    print_container(chain.begin(), chain.end());
     std::cout << "\n\n";
-
-    // vec_iterator chain_it = chain.begin() + 2;
-    // vec_iterator pend_it = pend.begin();
-
 }

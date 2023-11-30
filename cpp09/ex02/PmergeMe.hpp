@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <emajuri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:30:46 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/15 13:43:55 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/11/30 13:44:20 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,22 @@ class PmergeMe
             {
                 std::cout << "|" << *it << " < " << *(it + stride) << "|\n";
                 if (compare(*it, *(it + stride)))
-                    std::swap(*it, *(it + stride));
+                    swap_all_pairs(it, it + stride);
+            }
+        }
+
+        template<typename T>
+        void    swap_all_pairs(T first, T second)
+        {
+            int tmp;
+            T end = second;
+            while (first != end)
+            {
+                tmp = *first;
+                *first = *second;
+                *second = tmp;
+                first++;
+                second++;
             }
         }
 
