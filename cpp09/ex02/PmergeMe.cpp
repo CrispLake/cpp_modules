@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/06 16:30:20 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/06 17:01:09 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,31 @@ bool PmergeMe::vector_sort(const char **argv)
     print_container(m_numbers.begin(), m_numbers.end());
     vector_merge_insertion_sort(m_numbers.begin(), m_numbers.end(), 1);
     return true;
+}
+
+void PmergeMe::vector_update(std::list<vec_iterator>::iterator src_begin, std::list<vec_iterator>::iterator src_end, vec_iterator dst_begin, vec_iterator dst_end, std::size_t stride)
+{
+    std::vector<int> tmp;
+    tmp.reserve(distance(dst_begin, dst_end, 1));
+
+    vec_iterator tmp_it = tmp.begin();
+    vec_iterator src_tmp;
+    while (src_begin != src_end)
+    {
+        src_tmp = *src_begin;
+        for (std::size_t tmp_stride = stride; tmp_stride != 0; tmp_stride--)
+        {
+            *tmp_it = *src_tmp;
+            tmp_it++;
+            src_tmp++;
+        }
+        src_begin++;
+    }
+    for (vec_iterator tmp_it = tmp.begin(); tmp_it != tmp.end(); tmp_it++)
+    {
+        *dst_begin = *tmp_it;
+        dst_begin++;
+    }
 }
 
 void PmergeMe::vector_merge_insertion_sort(
@@ -145,5 +170,5 @@ void PmergeMe::vector_merge_insertion_sort(
         std::cout << **it << " ";
     std::cout << "\n";
     std::cout << "\n\n";
-    move_all(chain.begin(), chain.end(), first, last, stride);
+    vector_update(chain.begin(), chain.end(), first, last, stride);
 }

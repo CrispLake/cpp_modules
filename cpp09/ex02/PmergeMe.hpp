@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:30:46 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/06 16:28:30 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/06 16:40:53 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class PmergeMe
         //Vector specific
         bool vector_read(const char **argv);
         bool vector_sort(const char **argv);
+        void vector_update(std::list<vec_iterator>::iterator src_begin, std::list<vec_iterator>::iterator src_end, vec_iterator dst_begin, vec_iterator dst_end, std::size_t stride);
         void vector_merge_insertion_sort(vec_iterator const first, vec_iterator const last, std::size_t stride);
 
         //2nd container specific
@@ -90,32 +91,6 @@ class PmergeMe
                 *second = tmp;
                 first++;
                 second++;
-            }
-        }
-
-        template<typename T>
-        void move_all(std::list<vec_iterator>::iterator src_begin, std::list<vec_iterator>::iterator src_end, T dst_begin, T dst_end, std::size_t stride)
-        {
-            std::vector<int> tmp;
-            tmp.reserve(distance(dst_begin, dst_end, 1));
-
-            vec_iterator tmp_it = tmp.begin();
-            vec_iterator src_tmp;
-            while (src_begin != src_end)
-            {
-                src_tmp = *src_begin;
-                for (std::size_t tmp_stride = stride; tmp_stride != 0; tmp_stride--)
-                {
-                    *tmp_it = *src_tmp;
-                    tmp_it++;
-                    src_tmp++;
-                }
-                src_begin++;
-            }
-            for (vec_iterator tmp_it = tmp.begin(); tmp_it != tmp.end(); tmp_it++)
-            {
-                *dst_begin = *tmp_it;
-                dst_begin++;
             }
         }
 };
