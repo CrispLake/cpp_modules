@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/07 14:33:55 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/08 15:06:14 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,73 @@ PmergeMe& PmergeMe::operator=(PmergeMe const& ref)
 PmergeMe::~PmergeMe()
 {}
 
+void PmergeMe::test()
+{
+    std::vector<int> vec;
+    vec.push_back(1);
+    vec.push_back(4);
+    vec.push_back(5);
+    vec.push_back(3);
+    vec.push_back(8);
+    vec.push_back(9);
+    vec.push_back(2);
+    vec.push_back(6);
+    vec.push_back(7);
+    vec.push_back(10);
+    vec.push_back(13);
+    vec.push_back(12);
+
+    std::list<std::vector<int>::iterator> chain;
+    std::list<std::vector<int>::iterator> pend;
+
+    chain.push_back(vec.begin() + 2);
+    chain.push_back(vec.begin() + 4);
+    chain.push_back(vec.begin() + 5);
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
+    {
+        pend.push_back(it);
+    }
+    std::cout << "Chain: ";
+    for (std::list<std::vector<int>::iterator>::iterator it = chain.begin(); it != chain.end(); it++)
+    {
+        std::cout << **it << " ";
+    }
+    std::cout << "\nPend: ";
+    for (std::list<std::vector<int>::iterator>::iterator it = pend.begin(); it != pend.end(); it++)
+    {
+        std::cout << **it << " ";
+    }
+    std::cout << "\n";
+    for (std::list<std::vector<int>::iterator>::iterator pend_it = pend.begin(); pend_it != pend.end(); pend_it++)
+    {
+        std::list<std::vector<int>::iterator>::iterator spot = find_insert_spot(chain.begin(), chain.end(), pend_it);
+        std::cout << "item: " << **pend_it << "\n";
+        if (spot == chain.end())
+        {
+            std::cout << "Insert spot: END\n";
+            chain.insert(spot, *pend_it);
+        }
+        else 
+        {
+            std::cout << "Insert spot: " << **spot << "\n";
+            chain.insert(spot, *pend_it);
+        }
+        std::cout << "Chain: ";
+        for (std::list<std::vector<int>::iterator>::iterator it = chain.begin(); it != chain.end(); it++)
+        {
+            std::cout << **it << " ";
+        }
+        std::cout << "\n\n";
+    }
+}
+
 void PmergeMe::sort(const char **argv)
 {
     std::cout << "Started vecSort with: ";
     //time start
     if (!vector_sort(argv))
         return;
+    // test();
     //time end
     std::cout << "Ended vecSort with: ";
     print_container(m_numbers.begin(), m_numbers.end());
@@ -140,7 +201,9 @@ void PmergeMe::vector_insertion(std::list<vec_iterator>& chain, std::list<vec_it
         pend_it--;
         while(!jacobsthal_iters.empty())
         {
+            // find_insert_spot(chain.begin(), chain.end(), pend_it);
             std::list<vec_iterator>::iterator spot = find_insert_spot(chain.begin(), jacobsthal_iters.back(), pend_it);
+            std::cout << "Hello\n";
             chain.insert(spot, *pend_it);
             pend_it--;
             jacobsthal_iters.pop_back();

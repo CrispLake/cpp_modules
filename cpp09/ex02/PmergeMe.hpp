@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:30:46 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/07 14:36:00 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/08 14:51:28 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ class PmergeMe
         void vector_update(std::list<vec_iterator>::iterator src_begin, std::list<vec_iterator>::iterator src_end, vec_iterator dst_begin, vec_iterator dst_end, std::size_t stride);
         void vector_insertion(std::list<vec_iterator>& chain, std::list<vec_iterator>& pend);
         void vector_merge_insertion_sort(vec_iterator const first, vec_iterator const last, std::size_t stride);
+        
+        void test();
 
         //2nd container specific
         bool listSort(const char **argv);
@@ -109,7 +111,6 @@ class PmergeMe
         template<typename T>
         T get_iter(T begin, std::size_t pos)
         {
-            std::cout << "stuck: " << pos << "\n";
             while (pos--)
                 begin++;
             return begin;
@@ -120,16 +121,16 @@ class PmergeMe
         {
             std::size_t begin_pos = 0;
             std::size_t end_pos = list_distance(begin, end);
-            while (begin_pos <= end_pos)
+            while (begin_pos < end_pos)
             {
-                std::size_t mid_pos = begin_pos + (end_pos - begin_pos) / 2;
-                if (*item == *get_iter(begin, mid_pos))
+                std::size_t mid_pos = (end_pos + begin_pos) / 2;
+                if (**item == **get_iter(begin, mid_pos))
                     return get_iter(begin, mid_pos);
-                else if (compare(*get_iter(begin, mid_pos), *item))
+                else if (compare(**get_iter(begin, mid_pos), **item))
                     begin_pos = mid_pos + 1;
                 else
-                    end_pos = mid_pos - 1;
+                    end_pos = mid_pos;
             }
-            return get_iter(begin, end_pos);
+            return get_iter(begin, begin_pos);
         }
 };
