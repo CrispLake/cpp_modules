@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/08 15:06:14 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:10:45 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,8 @@ void PmergeMe::vector_insertion(std::list<vec_iterator>& chain, std::list<vec_it
     
     std::size_t dist = list_distance(pend_it, pend.end());
     std::size_t i = 0;
-    while (dist <= jacobsthal_diff[i])
+    // std::cout << "\ndist: " << dist << "pend: " << pend.size() << "chain: " << chain.size() << "\n";
+    while (dist >= jacobsthal_diff[i])
     {
         for (std::size_t group_size = jacobsthal_diff[i]; group_size != 0; group_size--)
         {
@@ -203,7 +204,6 @@ void PmergeMe::vector_insertion(std::list<vec_iterator>& chain, std::list<vec_it
         {
             // find_insert_spot(chain.begin(), chain.end(), pend_it);
             std::list<vec_iterator>::iterator spot = find_insert_spot(chain.begin(), jacobsthal_iters.back(), pend_it);
-            std::cout << "Hello\n";
             chain.insert(spot, *pend_it);
             pend_it--;
             jacobsthal_iters.pop_back();
