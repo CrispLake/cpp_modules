@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:30:46 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/11 14:57:56 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/11 17:22:59 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ class PmergeMe
         void vector_insertion(std::list<vec_iterator>& chain, std::list<vec_iterator>& pend);
         void vector_merge_insertion_sort(vec_iterator first, vec_iterator last, std::size_t stride);
         
-        void test();
-
         //2nd container specific
         bool listSort(const char **argv);
 

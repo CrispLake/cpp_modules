@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/11 15:01:46 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/11 17:26:04 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <limits>
 #include <algorithm>
 #include <cmath>
+#include <time.h>
 
 PmergeMe::PmergeMe()
 {}
@@ -37,17 +38,25 @@ PmergeMe::~PmergeMe()
 
 void PmergeMe::sort(const char **argv)
 {
-    std::cout << "Started vecSort with: ";
+    std::cout << "Before: ";
+    clock_t start = clock();
     //time start
     if (!vector_sort(argv))
         return;
-    // test();
     //time end
-    std::cout << "Ended vecSort with: ";
+    clock_t end = clock();
+    std::cout << "After: ";
     print_container(m_numbers.begin(), m_numbers.end());
+    double vec_time = 1000.0 * (end - start) / CLOCKS_PER_SEC;
     //time start
+    start = clock();
     // listSort(argv);
     //time end
+    end = clock();
+    unsigned int range = m_numbers.size();
+    double other_time = 1000.0 * (end - start) / CLOCKS_PER_SEC;
+    std::cout << "Time to process a range of " << range << " elements with std::vector : " << vec_time << " ms\n";
+    std::cout << "Time to process a range of " << range << " elements with std::vector : " << other_time << " ms\n";
 }
 
 bool PmergeMe::vector_read(const char **argv)
