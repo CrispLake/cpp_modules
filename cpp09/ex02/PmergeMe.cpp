@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/11 14:10:45 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:52:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,25 +140,33 @@ void PmergeMe::vector_update(std::list<vec_iterator>::iterator src_begin, std::l
 {
     std::vector<int> tmp;
     tmp.reserve(distance(dst_begin, dst_end, 1));
+    // std::cout << "UPDATE:\n" << "tmp size" << distance(dst_begin, dst_end, 1) << "\n";
+    // std::cout << "src size" << list_distance(src_begin, src_end) * stride << "\n";
+    // std::cout << "stride: " << stride << "\n";
 
     vec_iterator tmp_it = tmp.begin();
-    vec_iterator src_tmp;
+    vec_iterator src_tmp_it;
+    // std::cout << "TMP: ";
     while (src_begin != src_end)
     {
-        src_tmp = *src_begin;
+        src_tmp_it = *src_begin;
         for (std::size_t tmp_stride = stride; tmp_stride != 0; tmp_stride--)
         {
-            *tmp_it = *src_tmp;
+            tmp.push_back(*src_tmp_it);
+            // std::cout << tmp.back() << " ";
             tmp_it++;
-            src_tmp++;
+            src_tmp_it++;
         }
         src_begin++;
     }
-    for (vec_iterator tmp_it = tmp.begin(); tmp_it != tmp.end(); tmp_it++)
+    // std::cout << "\ndst: ";
+    for (vec_iterator tmp_begin = tmp.begin(); tmp_begin != tmp.end(); tmp_begin++)
     {
-        *dst_begin = *tmp_it;
+        *dst_begin = *tmp_begin;
+        // std::cout << *dst_begin << " ";
         dst_begin++;
     }
+    // std::cout << "\n";
 }
 
 
@@ -220,32 +228,32 @@ void PmergeMe::vector_insertion(std::list<vec_iterator>& chain, std::list<vec_it
 }
 
 void PmergeMe::vector_merge_insertion_sort(
-    vec_iterator const first,
-    vec_iterator const last,
+    vec_iterator first,
+    vec_iterator last,
     std::size_t stride)
 {
     size_t size = distance(first, last, stride);
     if (size < 2)
         return;
 
-    std::cout << "Size: " << size << "\n";
-    for (vec_iterator it = first; it < last; it += stride)
-        std::cout << *it << " ";
-    std::cout << "\n";
+    // std::cout << "Size: " << size << "\n";
+    // for (vec_iterator it = first; it < last; it += stride)
+    //     std::cout << *it << " ";
+    // std::cout << "\n";
 
     bool has_extra = size % 2;
-    std::cout << "has extra: " << (has_extra ? "True\n" : "False\n");
+    // std::cout << "has extra: " << (has_extra ? "True\n" : "False\n");
     vec_iterator end = has_extra ? (last - stride) : last;
-    std::cout << "Last: " << *last << " | last - 1: " << *(last - stride) << " | End: " << *end << "\n";
+    // std::cout << "Last: " << *last << " | last - 1: " << *(last - stride) << " | End: " << *end << "\n";
 
     swap_pairs(first, end, stride);
-    std::cout << "\n\n";
+    // std::cout << "\n\n";
     vector_merge_insertion_sort(first, end, stride * 2);
 
-    std::cout << "Size: " << size << "\n";
-    for (vec_iterator it = first; it < last; it += stride)
-        std::cout << *it << " ";
-    std::cout << "\n";
+    // std::cout << "Size: " << size << "\n";
+    // for (vec_iterator it = first; it < last; it += stride)
+    //     std::cout << *it << " ";
+    // std::cout << "\n";
 
     std::list<vec_iterator> chain;
     std::list<vec_iterator> pend;
@@ -262,14 +270,14 @@ void PmergeMe::vector_merge_insertion_sort(
     if (has_extra)
         pend.push_back(end);
 
-    std::cout << "Recursive call: " << log2(stride) << "\n";
-    for (std::list<vec_iterator>::iterator it = chain.begin(); it != chain.end(); it++)
-        std::cout << **it << " ";
-    std::cout << "\n";
-    std::cout << "      ";
-    for (std::list<vec_iterator>::iterator it = pend.begin(); it != pend.end(); it++)
-        std::cout << **it << " ";
-    std::cout << "\n";
+    // std::cout << "Recursive call: " << log2(stride) << "\n";
+    // for (std::list<vec_iterator>::iterator it = chain.begin(); it != chain.end(); it++)
+    //     std::cout << **it << " ";
+    // std::cout << "\n";
+    // std::cout << "      ";
+    // for (std::list<vec_iterator>::iterator it = pend.begin(); it != pend.end(); it++)
+    //     std::cout << **it << " ";
+    // std::cout << "\n";
 
     //implement insertion sort
     vector_insertion(chain, pend);
@@ -280,10 +288,10 @@ void PmergeMe::vector_merge_insertion_sort(
     // }
     // <- TEMP
 
-    std::cout << "End result\n";
-    for (std::list<vec_iterator>::iterator it = chain.begin(); it != chain.end(); it++)
-        std::cout << **it << " ";
-    std::cout << "\n";
-    std::cout << "\n\n";
+    // std::cout << "End result\n";
+    // for (std::list<vec_iterator>::iterator it = chain.begin(); it != chain.end(); it++)
+    //     std::cout << **it << " ";
+    // std::cout << "\n";
+    // std::cout << "\n\n";
     vector_update(chain.begin(), chain.end(), first, last, stride);
 }

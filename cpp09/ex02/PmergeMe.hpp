@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:30:46 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/08 14:51:28 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:53:07 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class PmergeMe
         bool vector_sort(const char **argv);
         void vector_update(std::list<vec_iterator>::iterator src_begin, std::list<vec_iterator>::iterator src_end, vec_iterator dst_begin, vec_iterator dst_end, std::size_t stride);
         void vector_insertion(std::list<vec_iterator>& chain, std::list<vec_iterator>& pend);
-        void vector_merge_insertion_sort(vec_iterator const first, vec_iterator const last, std::size_t stride);
+        void vector_merge_insertion_sort(vec_iterator first, vec_iterator last, std::size_t stride);
         
         void test();
 
@@ -87,7 +87,7 @@ class PmergeMe
         {
             for (T it = begin; it < end; it += stride * 2)
             {
-                std::cout << "|" << *it << " < " << *(it + stride) << "|\n";
+                // std::cout << "|" << *it << " < " << *(it + stride) << "|\n";
                 if (compare(*it, *(it + stride)))
                     swap_all_pairs(it, it + stride);
             }
