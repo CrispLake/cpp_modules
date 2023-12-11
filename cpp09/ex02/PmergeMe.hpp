@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:30:46 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/11 14:53:07 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:57:56 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ class PmergeMe
         {
             for (T it = begin; it < end; it += stride * 2)
             {
-                // std::cout << "|" << *it << " < " << *(it + stride) << "|\n";
                 if (compare(*it, *(it + stride)))
                     swap_all_pairs(it, it + stride);
             }

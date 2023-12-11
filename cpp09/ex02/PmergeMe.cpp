@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/11 14:52:58 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:01:46 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,66 +34,6 @@ PmergeMe& PmergeMe::operator=(PmergeMe const& ref)
 
 PmergeMe::~PmergeMe()
 {}
-
-void PmergeMe::test()
-{
-    std::vector<int> vec;
-    vec.push_back(1);
-    vec.push_back(4);
-    vec.push_back(5);
-    vec.push_back(3);
-    vec.push_back(8);
-    vec.push_back(9);
-    vec.push_back(2);
-    vec.push_back(6);
-    vec.push_back(7);
-    vec.push_back(10);
-    vec.push_back(13);
-    vec.push_back(12);
-
-    std::list<std::vector<int>::iterator> chain;
-    std::list<std::vector<int>::iterator> pend;
-
-    chain.push_back(vec.begin() + 2);
-    chain.push_back(vec.begin() + 4);
-    chain.push_back(vec.begin() + 5);
-    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
-    {
-        pend.push_back(it);
-    }
-    std::cout << "Chain: ";
-    for (std::list<std::vector<int>::iterator>::iterator it = chain.begin(); it != chain.end(); it++)
-    {
-        std::cout << **it << " ";
-    }
-    std::cout << "\nPend: ";
-    for (std::list<std::vector<int>::iterator>::iterator it = pend.begin(); it != pend.end(); it++)
-    {
-        std::cout << **it << " ";
-    }
-    std::cout << "\n";
-    for (std::list<std::vector<int>::iterator>::iterator pend_it = pend.begin(); pend_it != pend.end(); pend_it++)
-    {
-        std::list<std::vector<int>::iterator>::iterator spot = find_insert_spot(chain.begin(), chain.end(), pend_it);
-        std::cout << "item: " << **pend_it << "\n";
-        if (spot == chain.end())
-        {
-            std::cout << "Insert spot: END\n";
-            chain.insert(spot, *pend_it);
-        }
-        else 
-        {
-            std::cout << "Insert spot: " << **spot << "\n";
-            chain.insert(spot, *pend_it);
-        }
-        std::cout << "Chain: ";
-        for (std::list<std::vector<int>::iterator>::iterator it = chain.begin(); it != chain.end(); it++)
-        {
-            std::cout << **it << " ";
-        }
-        std::cout << "\n\n";
-    }
-}
 
 void PmergeMe::sort(const char **argv)
 {
@@ -140,33 +80,25 @@ void PmergeMe::vector_update(std::list<vec_iterator>::iterator src_begin, std::l
 {
     std::vector<int> tmp;
     tmp.reserve(distance(dst_begin, dst_end, 1));
-    // std::cout << "UPDATE:\n" << "tmp size" << distance(dst_begin, dst_end, 1) << "\n";
-    // std::cout << "src size" << list_distance(src_begin, src_end) * stride << "\n";
-    // std::cout << "stride: " << stride << "\n";
 
     vec_iterator tmp_it = tmp.begin();
     vec_iterator src_tmp_it;
-    // std::cout << "TMP: ";
     while (src_begin != src_end)
     {
         src_tmp_it = *src_begin;
         for (std::size_t tmp_stride = stride; tmp_stride != 0; tmp_stride--)
         {
             tmp.push_back(*src_tmp_it);
-            // std::cout << tmp.back() << " ";
             tmp_it++;
             src_tmp_it++;
         }
         src_begin++;
     }
-    // std::cout << "\ndst: ";
     for (vec_iterator tmp_begin = tmp.begin(); tmp_begin != tmp.end(); tmp_begin++)
     {
         *dst_begin = *tmp_begin;
-        // std::cout << *dst_begin << " ";
         dst_begin++;
     }
-    // std::cout << "\n";
 }
 
 
@@ -196,7 +128,6 @@ void PmergeMe::vector_insertion(std::list<vec_iterator>& chain, std::list<vec_it
     
     std::size_t dist = list_distance(pend_it, pend.end());
     std::size_t i = 0;
-    // std::cout << "\ndist: " << dist << "pend: " << pend.size() << "chain: " << chain.size() << "\n";
     while (dist >= jacobsthal_diff[i])
     {
         for (std::size_t group_size = jacobsthal_diff[i]; group_size != 0; group_size--)
@@ -210,7 +141,6 @@ void PmergeMe::vector_insertion(std::list<vec_iterator>& chain, std::list<vec_it
         pend_it--;
         while(!jacobsthal_iters.empty())
         {
-            // find_insert_spot(chain.begin(), chain.end(), pend_it);
             std::list<vec_iterator>::iterator spot = find_insert_spot(chain.begin(), jacobsthal_iters.back(), pend_it);
             chain.insert(spot, *pend_it);
             pend_it--;
@@ -236,24 +166,11 @@ void PmergeMe::vector_merge_insertion_sort(
     if (size < 2)
         return;
 
-    // std::cout << "Size: " << size << "\n";
-    // for (vec_iterator it = first; it < last; it += stride)
-    //     std::cout << *it << " ";
-    // std::cout << "\n";
-
     bool has_extra = size % 2;
-    // std::cout << "has extra: " << (has_extra ? "True\n" : "False\n");
     vec_iterator end = has_extra ? (last - stride) : last;
-    // std::cout << "Last: " << *last << " | last - 1: " << *(last - stride) << " | End: " << *end << "\n";
 
     swap_pairs(first, end, stride);
-    // std::cout << "\n\n";
     vector_merge_insertion_sort(first, end, stride * 2);
-
-    // std::cout << "Size: " << size << "\n";
-    // for (vec_iterator it = first; it < last; it += stride)
-    //     std::cout << *it << " ";
-    // std::cout << "\n";
 
     std::list<vec_iterator> chain;
     std::list<vec_iterator> pend;
@@ -270,28 +187,6 @@ void PmergeMe::vector_merge_insertion_sort(
     if (has_extra)
         pend.push_back(end);
 
-    // std::cout << "Recursive call: " << log2(stride) << "\n";
-    // for (std::list<vec_iterator>::iterator it = chain.begin(); it != chain.end(); it++)
-    //     std::cout << **it << " ";
-    // std::cout << "\n";
-    // std::cout << "      ";
-    // for (std::list<vec_iterator>::iterator it = pend.begin(); it != pend.end(); it++)
-    //     std::cout << **it << " ";
-    // std::cout << "\n";
-
-    //implement insertion sort
     vector_insertion(chain, pend);
-    // TEMP ->
-    // for (std::list<vec_iterator>::iterator it = pend_it; it != pend.end(); it++)
-    // {
-    //     chain.insert(chain.begin(), *it);
-    // }
-    // <- TEMP
-
-    // std::cout << "End result\n";
-    // for (std::list<vec_iterator>::iterator it = chain.begin(); it != chain.end(); it++)
-    //     std::cout << **it << " ";
-    // std::cout << "\n";
-    // std::cout << "\n\n";
     vector_update(chain.begin(), chain.end(), first, last, stride);
 }
