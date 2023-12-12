@@ -6,14 +6,13 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:42:06 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/20 15:48:18 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/12 14:20:39 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 
-//./PmergeMe `jot -r 12 10 99 | tr '\n' ' '`
 int main(int argc, char const *argv[])
 {
     PmergeMe    sorter;
