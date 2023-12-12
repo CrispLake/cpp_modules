@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/12 14:07:58 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/12 14:08:44 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,6 @@ void PmergeMe::sort(char const **argv)
     if (!deque_sort(argv))
         return;
     end = clock();
-    if (std::is_sorted(m_vector.begin(), m_vector.end()))
-    {
-        std::cout << "SORTED\n";
-    }
-    else
-    {
-        std::cout << "NOT SORTED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-        return;
-    }
-    if (std::is_sorted(m_deque.begin(), m_deque.end()))
-    {
-        std::cout << "SORTED\n";
-    }
-    else
-    {
-        std::cout << "NOT SORTED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-        return;
-    }
     unsigned int range = m_vector.size();
     double other_time = 1000.0 * (end - start) / CLOCKS_PER_SEC;
     std::cout << "Time to process a range of " << range << " elements with std::vector : " << vec_time << " ms\n";
