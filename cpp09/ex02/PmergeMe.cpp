@@ -6,16 +6,11 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:33:11 by emajuri           #+#    #+#             */
-/*   Updated: 2023/12/12 14:08:44 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/12 14:15:02 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <vector>
-#include <iostream>
-#include <limits>
-#include <algorithm>
-#include <cmath>
 #include <time.h>
 
 PmergeMe::PmergeMe()
