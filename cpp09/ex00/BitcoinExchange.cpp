@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:31 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/10 12:05:24 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/12 18:55:34 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <sstream>
 #include <algorithm>
 #include <stdexcept>
-#include <limits>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -90,11 +89,7 @@ bool    BitcoinExchange::isValidValue(std::string line) const
     float value;
     std::string valueStr = line.substr(line.find("|") + 2);
     std::stringstream(valueStr) >> value;
-    if (valueStr.find(".") != std::string::npos)
-        valueStr = valueStr.substr(0, valueStr.find("."));
-        if (valueStr == "1000")
-            return (false);
-    if (value < 0 || (valueStr.length() == 10 && valueStr > "1000"))
+    if (value < 0 || value > 1000)
         return (false);
     return (true);
 }

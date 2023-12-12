@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:31:05 by emajuri           #+#    #+#             */
-/*   Updated: 2023/11/07 12:53:43 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/12/12 18:41:27 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ int main(int argc, char const *argv[])
         std::cout << "Invalid argument count\n";
         return (1);
     }
-    (void)argv;
     try
     {
         BitcoinExchange btc;
         btc.Exchange(argv[1]);
-        // std::cout << btc.getRateByDate("20220402") << "\n";
     }
     catch(const std::exception& e)
     {
